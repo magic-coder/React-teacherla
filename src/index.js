@@ -1,11 +1,12 @@
 import React from 'react';
 import ReactDom from 'react-dom';
-import {createStore, applyMiddleware, compose} from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
-import {Provider} from 'react-redux';
-import {BrowserRouter, Route, Redirect, Switch} from 'react-router-dom';
+import { Provider } from 'react-redux';
 import reducers from './reducer';
 import './config';
+import './static/icon/iconfont.js'
+import './static/css/index.css'
 import MediaQuery from 'react-responsive';
 import MobileApp from './mobile/App';
 import PCApp from './pc/App';
@@ -21,14 +22,10 @@ class Root extends React.Component {
             <Provider store={store}>
                 <div>
                     <MediaQuery query='(max-device-width:1224px)'>
-                        <BrowserRouter>
                             <MobileApp/>
-                        </BrowserRouter>
                     </MediaQuery>
                     <MediaQuery query='(min-device-width:1224px)'>
-                        <BrowserRouter>
                             <PCApp/>
-                        </BrowserRouter>
                     </MediaQuery>
                 </div>
             </Provider>
