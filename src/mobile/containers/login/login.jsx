@@ -9,16 +9,15 @@ class M_Login extends React.Component{
     }
     register(){
         console.log(this.props);
-        this.props.history.push('/m_register');
+        this.props.history.push('/register');
     }
     render(){
         return(
             <div>
                 <WingBlank>
-                    <h2 style={{'textAlign':'center'}}>
-                        <div className='anticon icon-solution1' style={{color:'#108ee9',fontSize:'30px'}}> 教师听课系统</div>
-                    </h2>
                     <Logo/>
+                    <div className='anticon icon-team' style={{color:'#108ee9',fontSize:'34px','textAlign':'center'}}> 教师听课系统 </div>
+                    <WhiteSpace size={`lg`}/>
                 </WingBlank>
                 <List>
                     <InputItem>
