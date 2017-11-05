@@ -15,6 +15,9 @@ class M_Login extends React.Component{
         return(
             <div>
                 <Logo/>
+                <WingBlank>
+                    <h2 style={{'text-align':'center'}}>教师听课系统</h2>
+                </WingBlank>
                 <List>
                     <InputItem>
                         <div style={{ backgroundImage: 'url(https://zos.alipayobjects.com/rmsportal/DfkJHaJGgMghpXdqNaKF.png)', backgroundSize: 'cover', height: '22px', width: '22px' }} />

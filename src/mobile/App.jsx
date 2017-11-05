@@ -10,6 +10,9 @@ export default class MobileApp extends React.Component {
              <div>
                  <Route path={`/login`} component={M_Login}/>
                  <Route path={`/register`} component={M_Register}/>
+                 <div>
+                     <Redirect to='/login'></Redirect>
+                 </div>
              </div>
          </BrowserRouter>
      )
