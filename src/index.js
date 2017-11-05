@@ -5,7 +5,7 @@ import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import reducers from './reducer';
 import './config';
-import './static/icon/iconfont.js'
+import './static/icon/iconfont.css'
 import './static/css/index.css'
 import MediaQuery from 'react-responsive';
 import MobileApp from './mobile/App';
