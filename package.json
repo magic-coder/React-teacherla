@@ -119,5 +119,6 @@
     "less-loader": "^4.0.5",
     "style-loader": "^0.18.2"
   },
-  "proxy":"http://localhost:9094"
+  "proxy":"http://localhost:9094",
+  "homepage" : "http://www.kejigamhuo.com"
 }
