@@ -4,6 +4,6 @@ const app = express()
 //操作
 app.use('/user',userRouter)
 //
-app.listen(9094,function () {
-   console.log('Node app start at port 9094');
+app.listen(9093,function () {
+   console.log('Node app start at port 9093');
 })
