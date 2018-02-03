@@ -1,5 +1,5 @@
 import React from 'react'
-import Loading from '../component/'
+import Loading from '../component/Loading/Loading'
 
 class Index extends React.Component {
   render() {
