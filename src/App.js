@@ -4,8 +4,11 @@ import IndexRouter from './router/IndexRouter'
 
 class App extends React.Component {
   render() {
-    return (<div>
-        <IndexRouter/>
+    return (
+      <div>
+        <Loading>
+          <IndexRouter/>
+        </Loading>
       </div>)
   }
 }

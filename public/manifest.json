@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "教师听课管理系统",
+  "name": "厦门工学院-教师听课助手",
   "icons": [
     {
       "src": "favicon.ico",
@@ -10,6 +10,4 @@
   ],
   "start_url": "./index.html",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
 }
