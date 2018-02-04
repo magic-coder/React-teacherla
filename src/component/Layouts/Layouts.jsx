@@ -1,5 +1,5 @@
 import React from 'react'
-import { Layout } from 'antd'
+import { Layout, Icon } from 'antd'
 import './layout.css'
 
 class Layouts extends React.PureComponent {
@@ -7,9 +7,11 @@ class Layouts extends React.PureComponent {
     const { Header, Footer, Content } = Layout
     return(
       <Layout className="fullpage">
-        <Header>Header</Header>
+        <Header></Header>
         <Content>Content</Content>
-        <Footer style={{ textAlign: 'center' }}>Footer</Footer>
+        <Footer style={{ textAlign: 'center' }}>
+           <Icon type="copyright" /> Using ant-design <Icon type="ant-design" style={{ fontSize: 16, color: '#08c' }} />
+        </Footer>
       </Layout>
     )
   }
