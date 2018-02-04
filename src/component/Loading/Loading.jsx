@@ -7,7 +7,7 @@ class Loading extends React.Component {
   constructor() {
     super()
     this.state = {
-      loading: false
+      loading: true
     }
     this.interceptors = this.interceptors.bind(this)
   }

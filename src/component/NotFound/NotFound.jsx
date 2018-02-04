@@ -6,7 +6,7 @@ class NotFound extends React.PureComponent {
     return(
       <Row>
         <Col span={12} offset={6}>
-          <div>404 NotFound</div>
+          <div style={{textAlign:'center'}}><h1>404 NotFound</h1></div>
         </Col>
       </Row>
     )
