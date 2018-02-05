@@ -1,14 +1,19 @@
 import React from 'react'
-import { Row, Col } from 'antd'
+import {Row, Col} from 'antd'
+import Logo from '../Logo/logo'
 
 class NotFound extends React.PureComponent {
-  render(){
-    return(
-      <Row>
-        <Col span={12} offset={6}>
-          <div style={{textAlign:'center'}}><h1>404 NotFound</h1></div>
-        </Col>
-      </Row>
+  render() {
+    return (
+      <div>
+        <Logo/>
+        <h1 style={{
+            textAlign: 'center'
+          }}>404</h1>
+        <h2 style={{
+            textAlign: 'center'
+          }}>对不起，找不到此页面</h2>
+      </div>
     )
   }
 }
