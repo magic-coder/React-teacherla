@@ -2,8 +2,10 @@ import React from 'react'
 import {Layout} from 'antd'
 import {BrowserRouter, Route} from 'react-router-dom'
 import Navbar from '../component/Navbar/Navbar'
-import Layouts from '../component/Layouts/Layouts'
 import Home from '../containers/Home/Home'
+import Own from '../containers/Own/Own'
+import ClassList from '../containers/ClassList/ClassList'
+import VisitList from '../containers/VisitList/VisitList'
 import './layout.css'
 
 class HomeRouter extends React.PureComponent {
@@ -13,7 +15,9 @@ class HomeRouter extends React.PureComponent {
       <Navbar/>
       <Content>
         <Route path='/' exact="exact" component={Home}/>
-        <Route path='/layouts' component={Layouts}/>
+        <Route path='/classlist' component={ClassList}/>
+        <Route path='/visitlist' component={VisitList}/>
+        <Route path='/own' component={Own}/>
       </Content>
     </Layout>)
   }

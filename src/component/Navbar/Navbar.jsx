@@ -15,13 +15,15 @@ class Navbar extends React.PureComponent {
         <Link to='/'>主页</Link>
       </Menu.Item>
       <Menu.Item key="1">
-        <Link to='/layouts'>听课表</Link>
+        <Link to='/classlist'>听课表</Link>
       </Menu.Item>
       <Menu.Item key="2">
-        <Link to='/layouts'>课程表</Link>
+        <Link to='/visitlist'>课程表</Link>
       </Menu.Item>
       <Menu.Divider/>
-      <Menu.Item key="3">教师系统</Menu.Item>
+      <Menu.Item key="3">
+        <Link to='/own'>个人中心</Link>
+      </Menu.Item>
     </Menu>)
     const {Header} = Layout
     return (
