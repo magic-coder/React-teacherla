@@ -19,6 +19,12 @@ const models = {
     'title':{'type':String}
   },
   course:{
-    'classteacher':{'type':String,'require':true}
+    'classteacher':{'type':String,'require':true},
+    'department':{'type':String,'require':true},
+    'classname':{'type':String,'require':true},
+    'section':{'type':String,'require':true},
+    'datatime':{'type':Number,'require':true},
+    'classroom':{'type':String,'require':true},
+    'people_state':{'type':Array,'require':true}
   }
 }
