@@ -1,5 +1,4 @@
 import React from 'react'
-import {Row, Col} from 'antd'
 import Logo from '../Logo/logo'
 
 class NotFound extends React.PureComponent {

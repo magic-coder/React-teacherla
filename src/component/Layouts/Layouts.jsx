@@ -1,9 +1,19 @@
 import React from 'react'
+import {Layout} from 'antd'
+import Navbar from '../Navbar/Navbar'
 import './layout.css'
 
 class Layouts extends React.PureComponent {
   render() {
-    return (<h1>Layout</h1>)
+    const {Content} = Layout
+    return (
+      <Layout className='fullpage'>
+        <Navbar/>
+        <Content>
+          {this.props.children}
+        </Content>
+      </Layout>
+    )
   }
 }
 
