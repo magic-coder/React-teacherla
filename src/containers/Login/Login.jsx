@@ -8,24 +8,17 @@ import {
   Row,
   Col
 } from 'antd'
+import {Link} from 'react-router-dom'
 import Logo from '../../component/Logo/logo'
 const FormItem = Form.Item;
 
 class Login extends React.Component {
-  handleSubmit = (e) => {
-    e.preventDefault();
-    this.props.form.validateFields((err, values) => {
-      if (!err) {
-        console.log('Received values of form: ', values);
-      }
-    });
-  }
   render() {
     return (<div>
       <Logo/>
       <Row>
         <Col span={17} offset={3}>
-          <Form onSubmit={this.handleSubmit} className="login-form">
+          <Form className="login-form">
             <FormItem>
               <Input prefix={<Icon type = "user" style = {{ color: 'rgba(0,0,0,.25)' }}/>} placeholder="用户"/>
             </FormItem>
@@ -36,7 +29,7 @@ class Login extends React.Component {
               <Button type="primary" htmlType="submit" style={{width:'100%'}}>登录</Button>
             </FormItem>
             <FormItem>
-              <a href='https://www.baidu.com'>跳转注册</a>
+              <Link to='/register'>跳转注册</Link>
             </FormItem>
           </Form>
         </Col>

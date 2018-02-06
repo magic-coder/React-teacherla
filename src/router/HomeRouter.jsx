@@ -1,6 +1,6 @@
 import React from 'react'
 import {Layout} from 'antd'
-import {BrowserRouter, Route} from 'react-router-dom'
+import {Route} from 'react-router-dom'
 import Navbar from '../component/Navbar/Navbar'
 import Home from '../containers/Home/Home'
 import Own from '../containers/Own/Own'
@@ -10,7 +10,7 @@ import './layout.css'
 
 class HomeRouter extends React.PureComponent {
   render() {
-    const {Header, Footer, Content} = Layout
+    const {Content} = Layout
     return (<Layout className='fullpage'>
       <Navbar/>
       <Content>
