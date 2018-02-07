@@ -1,8 +1,13 @@
 import React from 'react'
+import Carousels from '../../component/Carousel/Carousel'
 
 class Home extends React.PureComponent {
   render() {
-    return (<h1>这是主页</h1>)
+    return (
+      <div>
+        <Carousels/>
+      </div>
+    )
   }
 }
 

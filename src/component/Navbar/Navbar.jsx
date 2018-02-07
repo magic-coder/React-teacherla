@@ -34,7 +34,7 @@ class Navbar extends React.PureComponent {
           <Button type="primary" style={{
               marginBottom: 16
             }}>
-            <Icon type="menu-unfold"/>
+            <Icon type="appstore" />
           </Button>
         </Dropdown>
       </Header>

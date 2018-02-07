@@ -9,7 +9,7 @@ class Layouts extends React.PureComponent {
     return (
       <Layout className='fullpage'>
         <Navbar/>
-        <Content>
+        <Content className='content'>
           {this.props.children}
         </Content>
       </Layout>

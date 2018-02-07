@@ -1,3 +1,7 @@
-.fullpage{
+.fullpage {
   height: fill-available;
+}
+
+.content {
+  margin: 10px 10px;
 }

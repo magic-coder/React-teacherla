@@ -12,7 +12,7 @@ const models = {
     'pwd':{'type':String,'require':true},
     'teacher_num':{'type':String,'require':true},
     //头像
-    'avator':{'type':String,'require':true},
+    'avatar':{'type':String,'require':true},
     //简介
     'desc':{'type':String},
     //职称
