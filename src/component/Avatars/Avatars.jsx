@@ -4,9 +4,7 @@ import { Avatar } from 'antd'
 class Avatars extends React.PureComponent {
   render(){
     return(
-      <div>
-        <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
-      </div>
+        <Avatar style={{right:'0px'}} shape="square" icon="user" />
     )
   }
 }

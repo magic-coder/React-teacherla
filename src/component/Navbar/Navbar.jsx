@@ -7,6 +7,7 @@ Icon,
 Menu,
 Dropdown
 } from 'antd'
+import Avatars from '../Avatars/Avatars'
 
 class Navbar extends React.PureComponent {
   render(){
@@ -37,6 +38,7 @@ class Navbar extends React.PureComponent {
             <Icon type="appstore" />
           </Button>
         </Dropdown>
+        <Avatars/>
       </Header>
     )
   }
