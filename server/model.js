@@ -26,5 +26,14 @@ const models = {
     'datatime':{'type':Number,'require':true},
     'classroom':{'type':String,'require':true},
     'people_state':{'type':Array,'require':true}
+  },
+  course_score:{
+    'classteacher':{'type':String,'require':true},
+    'class_id':{'type':String,'require':true},
+    'c_content':{'type':String,'require':true},
+    'c_evaluation':{'type':String,'require':true},
+    'c_opinion':{'type':String,'require':true},
+    'c_teacher_score':{'type':Array,'require':true},
+    'c_student_score':{'type':Array,'require':true}
   }
 }
