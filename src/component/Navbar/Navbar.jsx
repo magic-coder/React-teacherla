@@ -5,7 +5,9 @@ Button,
 Layout,
 Icon,
 Menu,
-Dropdown
+Dropdown,
+Row,
+Col
 } from 'antd'
 import Avatars from '../Avatars/Avatars'
 
@@ -31,6 +33,8 @@ class Navbar extends React.PureComponent {
       <Header style={{
           padding: '0px 20px'
         }}>
+        <Row type="flex" justify="space-between">
+        <Col>
         <Dropdown overlay={menu} trigger={['click']}>
           <Button type="primary" style={{
               marginBottom: 16
@@ -38,7 +42,9 @@ class Navbar extends React.PureComponent {
             <Icon type="appstore" />
           </Button>
         </Dropdown>
+        </Col>
         <Avatars/>
+        </Row>
       </Header>
     )
   }
