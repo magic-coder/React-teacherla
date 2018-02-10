@@ -1,8 +1,11 @@
 import React from 'react'
+import { Calendar } from 'antd'
 
 class ClassList extends React.PureComponent {
   render() {
-    return (<h1>课程列表</h1>)
+    return (<div>
+        <Calendar fullscreen={false} />
+      </div>)
   }
 }
 
