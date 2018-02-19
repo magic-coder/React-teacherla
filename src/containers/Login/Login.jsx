@@ -12,6 +12,9 @@ import Logo from '../../component/Logo/logo'
 const FormItem = Form.Item;
 
 class Login extends React.Component {
+  constructor(props) {
+    super(props);
+  }
   render() {
     return (<div>
       <Logo/>
@@ -19,7 +22,7 @@ class Login extends React.Component {
         <Col span={17} offset={3}>
           <Form className="login-form">
             <FormItem>
-              <Input prefix={<Icon type = "user" style = {{ color: 'rgba(0,0,0,.25)' }}/>} placeholder="用户"/>
+              <Input prefix={<Icon type = "user" style = {{ color: 'rgba(0,0,0,.25)' }}/>} placeholder="账号"/>
             </FormItem>
             <FormItem>
               <Input prefix={<Icon type = "lock" style = {{ color: 'rgba(0,0,0,.25)' }}/>} type="password" placeholder="密码"/>
