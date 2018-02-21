@@ -12,6 +12,15 @@ import Logo from '../../component/Logo/logo'
 const FormItem = Form.Item;
 
 class Register extends React.Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      user:'',
+      pwd:'',
+      repeatpwd:'',
+      invitnum:''
+    }
+  }
   render() {
     return (<div>
       <Logo/>
