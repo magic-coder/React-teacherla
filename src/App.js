@@ -3,7 +3,6 @@ import {Provider} from 'react-redux'
 import Loading from './component/Loading/Loading'
 import IndexRouter from './router/IndexRouter'
 import configStore from './redux/store'
-import AuthRouter from './component/AuthRouter/AuthRouter'
 
 const store = configStore()
 

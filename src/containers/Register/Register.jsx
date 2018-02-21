@@ -11,7 +11,7 @@ import {Link} from 'react-router-dom'
 import Logo from '../../component/Logo/logo'
 const FormItem = Form.Item;
 
-class Register extends React.Component {
+class Registers extends React.Component {
   constructor(props){
     super(props)
     this.state = {
@@ -51,5 +51,7 @@ class Register extends React.Component {
     </div>);
   }
 }
+
+const Register = Form.create()(Registers);
 
 export default Register

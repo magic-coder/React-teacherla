@@ -38,7 +38,7 @@ class Loading extends React.Component {
 }
 
 Loading.defaultProps = {
-  tip: '加载中...'
+  tip: ''
 }
 
 export default Loading
