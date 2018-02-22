@@ -25,7 +25,7 @@ class Logins extends React.Component {
     });
   }
   render() {
-    const {getFieldDecorator} = this.props.form;
+    const {getFieldDecorator} = this.props.form
     return (<div>
       <Logo/>
       <Row>
