@@ -14,7 +14,8 @@ import Logo from '../../component/Logo/logo'
 const FormItem = Form.Item;
 
 @connect(
-  state => state.user
+  state => state.user,
+  {register}
 )
 class Registers extends React.Component {
   constructor(props) {
@@ -27,10 +28,6 @@ class Registers extends React.Component {
     }
     this.handleSubmit = this.handleSubmit.bind(this)
     this.checkPassword = this.checkPassword.bind(this)
-    this.handleRegister = this.handleRegister.bind(this)
-  }
-  handleSubmit = () => {
-    this.props.register(this.state)
   }
   checkPassword = (rule, value, callback) => {
     const form = this.props.form;
@@ -40,13 +37,15 @@ class Registers extends React.Component {
       callback();
     }
   }
-  handleRegister = () =>{
+  handleSubmit = (e) =>{
+    e.preventDefault()
     this.props.form.validateFields((err, values) => {
-      const {userName, password, repeatpwd, invitnum} = values
+      const {userName,password,repeatpwd,invitnum} = values
       if (!err) {
         this.setState({userName: userName, password: password, repeatpwd: repeatpwd, invitnum: invitnum})
       }
-    });
+    })
+    this.props.register(this.state)
   }
   render() {
     const {getFieldDecorator} = this.props.form
