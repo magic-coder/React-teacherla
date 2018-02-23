@@ -8,9 +8,14 @@ import {
   Col
 } from 'antd'
 import {Link} from 'react-router-dom'
+import {connect} from 'react-redux'
+import {register} from '../../redux/action/user.action'
 import Logo from '../../component/Logo/logo'
 const FormItem = Form.Item;
 
+@connect(
+  state => state.user
+)
 class Registers extends React.Component {
   constructor(props) {
     super(props)
@@ -22,15 +27,10 @@ class Registers extends React.Component {
     }
     this.handleSubmit = this.handleSubmit.bind(this)
     this.checkPassword = this.checkPassword.bind(this)
+    this.handleRegister = this.handleRegister.bind(this)
   }
-  handleSubmit = (e) => {
-    e.preventDefault();
-    this.props.form.validateFields((err, values) => {
-      const {userName, password, repeatpwd, invitnum} = values
-      if (!err) {
-        this.setState({userName: userName, password: password, repeatpwd: repeatpwd, invitnum: invitnum})
-      }
-    });
+  handleSubmit = () => {
+    this.props.register(this.state)
   }
   checkPassword = (rule, value, callback) => {
     const form = this.props.form;
@@ -40,13 +40,21 @@ class Registers extends React.Component {
       callback();
     }
   }
+  handleRegister = () =>{
+    this.props.form.validateFields((err, values) => {
+      const {userName, password, repeatpwd, invitnum} = values
+      if (!err) {
+        this.setState({userName: userName, password: password, repeatpwd: repeatpwd, invitnum: invitnum})
+      }
+    });
+  }
   render() {
     const {getFieldDecorator} = this.props.form
     return (<div>
       <Logo/>
       <Row>
         <Col span={17} offset={3}>
-          <Form onSubmit={this.handleSubmit} className="login-form">
+          <Form onChange={this.handleRegister} onSubmit={this.handleSubmit} className="login-form">
             <FormItem>
               {
                 getFieldDecorator('userName', {

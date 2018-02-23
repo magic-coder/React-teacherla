@@ -1,19 +1,21 @@
 import * as actionType from '../contants/user.contants'
 
 const initState = {
+  isAuth:'',
+  msg:'',
   user:'',
-  msg:''
+  pwd:''
 }
 
-export default function userinfo(state = initState,action) {
+export default function user(state = initState,action) {
   switch (action.type) {
     case actionType.AUTH_SUCCESS:
       return {
-        ...state
+        ...state, msg:'', isAuth:true, ...action.payload
       }
-    case actionType.LOGIN_OUT:
+    case actionType.ERROR_MSG:
       return {
-        ...initState,redirectTo:'/login'
+        ...state, msg:action.msg, isAuth:false
       }
     default:
       return state;
