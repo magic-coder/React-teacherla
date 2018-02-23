@@ -15,20 +15,30 @@ class Registers extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      user: '',
-      pwd: '',
+      userName: '',
+      password: '',
       repeatpwd: '',
       invitnum: ''
     }
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.checkPassword = this.checkPassword.bind(this)
   }
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
+      const {userName, password, repeatpwd, invitnum} = values
       if (!err) {
-        console.log('Received values of form: ', values);
+        this.setState({userName: userName, password: password, repeatpwd: repeatpwd, invitnum: invitnum})
       }
     });
+  }
+  checkPassword = (rule, value, callback) => {
+    const form = this.props.form;
+    if (value && value !== form.getFieldValue('password')) {
+      callback('两次输入密码不同!');
+    } else {
+      callback();
+    }
   }
   render() {
     const {getFieldDecorator} = this.props.form
@@ -68,6 +78,8 @@ class Registers extends React.Component {
                     {
                       required: true,
                       message: '请输入密码!'
+                    }, {
+                      validator: this.checkPassword
                     }
                   ]
                 })(<Input prefix={<Icon type = "lock" style = {{ color: 'rgba(0,0,0,.25)' }}/>} type="password" placeholder="再次输入密码"/>)
@@ -82,7 +94,7 @@ class Registers extends React.Component {
                       message: '请输入邀请码!'
                     }
                   ]
-                })(<Input prefix={<Icon type="barcode" style = {{ color: 'rgba(0,0,0,.25)' }}/>} type="number" placeholder="邀请码"/>)
+                })(<Input prefix={<Icon type = "barcode" style = {{ color: 'rgba(0,0,0,.25)' }}/>} type="number" placeholder="邀请码"/>)
               }
             </FormItem>
             <FormItem>
