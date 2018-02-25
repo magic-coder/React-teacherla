@@ -1,5 +1,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import App from './App'
+import {Provider} from 'react-redux'
+import Loading from './component/Loading/Loading'
+import IndexRouter from './router/IndexRouter'
+import configStore from './redux/store'
 
-ReactDOM.render(<App />, document.getElementById('root'))
+const store = configStore()
+
+ReactDOM.render(
+  <Provider store={store}>
+        <IndexRouter/>
+  </Provider>, document.getElementById('root'))

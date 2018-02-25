@@ -13,10 +13,7 @@ import {register} from '../../redux/action/user.action'
 import Logo from '../../component/Logo/logo'
 const FormItem = Form.Item;
 
-@connect(
-  state => state.user,
-  {register}
-)
+@connect(state => state.user, {register})
 class Registers extends React.Component {
   constructor(props) {
     super(props)
@@ -37,15 +34,14 @@ class Registers extends React.Component {
       callback();
     }
   }
-  handleSubmit = (e) =>{
+  handleSubmit = (e) => {
     e.preventDefault()
     this.props.form.validateFields((err, values) => {
-      const {userName,password,repeatpwd,invitnum} = values
       if (!err) {
-        this.setState({userName: userName, password: password, repeatpwd: repeatpwd, invitnum: invitnum})
+        console.log(values)
+        this.props.register(values)
       }
     })
-    this.props.register(this.state)
   }
   render() {
     const {getFieldDecorator} = this.props.form
@@ -53,7 +49,7 @@ class Registers extends React.Component {
       <Logo/>
       <Row>
         <Col span={17} offset={3}>
-          <Form onChange={this.handleRegister} onSubmit={this.handleSubmit} className="login-form">
+          <Form onSubmit={this.handleSubmit} className="login-form">
             <FormItem>
               {
                 getFieldDecorator('userName', {

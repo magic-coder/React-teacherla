@@ -3,11 +3,9 @@ import thunk from 'redux-thunk'
 import reducers from './reducers/reducers'
 
 export default function configStore() {
-  const store = createStore(reducers,
-    compose(
-      applyMiddleware(thunk),
-      window.devToolsExtension ? window.devToolsExtension() : undefined
-    )
-  )
+  const store = createStore(reducers, compose(
+    applyMiddleware(thunk), window.devToolsExtension
+    ? window.devToolsExtension()
+    : f => f))
   return store
 }
