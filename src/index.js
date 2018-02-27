@@ -8,5 +8,5 @@ const store = configStore()
 
 ReactDOM.render(
   <Provider store={store}>
-        <IndexRouter/>
+    <IndexRouter/>
   </Provider>, document.getElementById('root'))
