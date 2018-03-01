@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import {Provider} from 'react-redux'
 import IndexRouter from './router/IndexRouter'
 import configStore from './redux/store'
+import './config/config'
 
 const store = configStore()
 
