@@ -10,7 +10,7 @@ Router.get('/list',function (req,res) {
 })
 
 Router.post('/register',function (req,res) {
-  console.log(ls);
+  
 })
 
 Router.get('/info',function (req, res) {
