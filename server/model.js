@@ -2,17 +2,17 @@ const mongoose = require('mongoose')
 //链接mongoDB
 const DB_URL = 'mongodb://localhost:27017/XIT_Tla'
 mongoose.connect(DB_URL)
-mongoose.connection.on('connected'.function () {
-  console.log('mongo connect sucess')
+mongoose.connection.on('connected',function () {
+  console.log('mongodb connect sucess')
 })
 
 const models = {
   user:{
     'user':{'type':String,'require':true},
-    'pwd':{'type':String,'require':true},
-    'teacher_num':{'type':String,'require':true},
+    'password':{'type':String,'require':true},
+    'teacher_name':{'type':String},
     //头像
-    'avatar':{'type':String,'require':true},
+    'avatar':{'type':String},
     //简介
     'desc':{'type':String},
     //职称
@@ -35,5 +35,9 @@ const models = {
     'c_opinion':{'type':String,'require':true},
     'c_teacher_score':{'type':Array,'require':true},
     'c_student_score':{'type':Array,'require':true}
+  },
+  check:{
+    'user':{'type':String,'require':true},
+    'invitnum':{'type':String,'require':true}
   }
 }

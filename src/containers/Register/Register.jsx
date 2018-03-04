@@ -59,7 +59,7 @@ class Registers extends React.Component {
                       message: '请输入账号!'
                     }
                   ]
-                })(<Input prefix={<Icon type = "user" style = {{ color: 'rgba(0,0,0,.25)' }}/>} placeholder="输入账号"/>)
+                })(<Input prefix={<Icon type = "user" style = {{ color: 'rgba(0,0,0,.25)' }}/>} placeholder="输入教师卡账号"/>)
               }
             </FormItem>
             <FormItem>
