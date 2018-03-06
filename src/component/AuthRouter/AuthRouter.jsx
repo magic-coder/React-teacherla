@@ -18,7 +18,7 @@ class AuthRouter extends React.Component {
     axios.get('/user/info').then(res => {
       if (res.status === 200) {
         if (res.data.code === 0) {
-          this.props.history.push('/')
+
         } else {
           this.props.history.push('/login')
         }

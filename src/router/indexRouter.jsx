@@ -9,7 +9,6 @@ class IndexRouter extends React.PureComponent {
   render() {
     return (<BrowserRouter>
       <div>
-        <AuthRouter/>
         <Switch>
           <Route path='/login' component={Login}/>
           <Route path='/register' component={Register}/>

@@ -11,13 +11,14 @@ Router.get('/list',function (req,res) {
   })
 })
 
-//验证信息列表  
+//验证信息列表
 Router.get('/invitnum',function (req,res) {
   Check.find({},function (err,doc) {
     return res.json(doc)
   })
 })
 
+//注册
 Router.post('/register',function (req,res) {
   console.log(req.body)
   const {user, password, invitnum} = req.body
@@ -37,8 +38,9 @@ Router.post('/register',function (req,res) {
   })
 })
 
+//
 Router.get('/info',function (req, res) {
-  return res.json({code:1})
+  return res.json({code:0})
 })
 
 module.exports = Router

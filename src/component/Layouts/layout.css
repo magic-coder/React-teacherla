@@ -1,7 +1,13 @@
 .fullpage {
-  height: fill-available;
+  position: absolute;
+  height: 100%;
+  bottom: 0;
+  right: 0;
+  left: 0;
 }
 
 .content {
-  margin: 10px 10px;
+  position: relative;
+  padding: 10px 10px;
+  overflow: scroll;
 }

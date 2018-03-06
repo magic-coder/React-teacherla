@@ -18,14 +18,10 @@ class Navbar extends React.PureComponent {
         <Link to='/'>主页</Link>
       </Menu.Item>
       <Menu.Item key="1">
-        <Link to='/classlist'>听课表</Link>
+        <Link to='/classlist'>课程表</Link>
       </Menu.Item>
       <Menu.Item key="2">
-        <Link to='/visitlist'>课程表</Link>
-      </Menu.Item>
-      <Menu.Divider/>
-      <Menu.Item key="3">
-        <Link to='/own'>个人中心</Link>
+        <Link to='/visitlist'>听课表</Link>
       </Menu.Item>
     </Menu>)
     const {Header} = Layout
@@ -43,7 +39,7 @@ class Navbar extends React.PureComponent {
           </Button>
         </Dropdown>
         </Col>
-        <Avatars/>
+        <Link to='/own'><Avatars/></Link>
         </Row>
       </Header>
     )
