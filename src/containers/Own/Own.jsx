@@ -1,8 +1,15 @@
 import React from 'react'
+import { Avatar ,Card } from 'antd';
+const { Meta } = Card;
 
 class Own extends React.PureComponent {
   render() {
-    return (<h1>个人中心</h1>)
+    return (<div >
+      <Card hoverable="hoverable" style={{marginTop: 20,
+        width: '100%'}} cover={<div style={{textAlign:'center',paddingTop:'20px'}}><Avatar icon="smile" /></div>}>
+        <Meta style={{textAlign:'center'}} title={<div style={{color:'#1890ff'}}>陈维斌</div>} description="教授"/>
+      </Card>
+    </div>)
   }
 }
 

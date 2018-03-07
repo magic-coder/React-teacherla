@@ -1,5 +1,5 @@
 import React from 'react'
-import {DatePicker, Card, Avatar} from 'antd';
+import { DatePicker, Icon, Card, Avatar } from 'antd';
 import moment from 'moment';
 
 const dateFormat = 'MM月DD日';
@@ -31,33 +31,25 @@ class ClassList extends React.Component {
       <Card style={{
           marginTop: 20,
           width: '100%'
-        }}>
-        <Meta avatar={<Avatar src = "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />} title="软件工程" description={<div > <p>上午第三节课</p>
-          <p>任课老师：陈维斌</p>
+        }} actions={[<div>课程详情</div> , <div><Icon type="team" /> 听课教师</div>]}>
+        <Meta avatar={<Avatar shape="square" icon="user" />} title="软件工程" description={<div >
+          <p>上午第三节课</p>
         </div>}/>
       </Card>
       <Card style={{
           marginTop: 20,
           width: '100%'
-        }}>
-        <Meta avatar={<Avatar src = "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />} title="软件工程" description={<div > <p>上午第三节课</p>
-          <p>任课老师：陈维斌</p>
+        }} actions={[<div>课程详情</div> , <div><Icon type="team" /> 听课教师</div>]}>
+        <Meta avatar={<Avatar shape="square" icon="user" />} title="软件工程" description={<div >
+          <p>上午第三节课</p>
         </div>}/>
       </Card>
       <Card style={{
           marginTop: 20,
           width: '100%'
-        }}>
-        <Meta avatar={<Avatar src = "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />} title="软件工程" description={<div > <p>上午第三节课</p>
-          <p>任课老师：陈维斌</p>
-        </div>}/>
-      </Card>
-      <Card style={{
-          marginTop: 20,
-          width: '100%'
-        }}>
-        <Meta avatar={<Avatar src = "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />} title="软件工程" description={<div > <p>上午第三节课</p>
-          <p>任课老师：陈维斌</p>
+        }} actions={[<div>课程详情</div> , <div><Icon type="team" /> 听课教师</div>]}>
+        <Meta avatar={<Avatar shape="square" icon="user" />} title="软件工程" description={<div >
+          <p>上午第三节课</p>
         </div>}/>
       </Card>
     </div>)
