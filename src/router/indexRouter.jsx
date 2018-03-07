@@ -3,7 +3,7 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom'
 import HomeRouter from './HomeRouter'
 import Login from '../containers/Login/Login'
 import Register from '../containers/Register/Register'
-import AuthRouter from '../component/AuthRouter/AuthRouter'
+//import AuthRouter from '../component/AuthRouter/AuthRouter'
 
 class IndexRouter extends React.PureComponent {
   render() {
