@@ -11,6 +11,17 @@ Router.get('/list',function (req,res) {
   })
 })
 
+//生成验证码
+Router.post('/addinvitnum',function (req,res) {
+  const {user,invitnum} = {
+    user:'1403102048',
+    'invitnum':'202083'
+  }
+  Check.create({user,invitnum},function (err,doc) {
+    console.log(doc);
+  })
+})
+
 //验证信息列表
 Router.get('/invitnum',function (req,res) {
   Check.find({},function (err,doc) {
