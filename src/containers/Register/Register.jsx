@@ -18,7 +18,7 @@ class Registers extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      userName: '',
+      user: '',
       password: '',
       repeatpwd: '',
       invitnum: ''
@@ -52,7 +52,7 @@ class Registers extends React.Component {
           <Form onSubmit={this.handleSubmit} className="login-form">
             <FormItem>
               {
-                getFieldDecorator('userName', {
+                getFieldDecorator('user', {
                   rules: [
                     {
                       required: true,

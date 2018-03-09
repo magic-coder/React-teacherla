@@ -9,11 +9,11 @@ function errorMsg(msg) {
   return {type:actionType.ERROR_MSG, msg}
 }
 
-export function register({userName, password, invitnum}) {
+export function register({user, password, invitnum}) {
   return dispatch => {
-    axios.post('/user/login', {userName, password, invitnum}).then(res => {
+    axios.post('/user/register', {user, password, invitnum}).then(res => {
       if (res.status === 200 && res.data.code === 0) {
-        dispatch(authSucess({userName, password, invitnum}))
+        dispatch(authSucess({user, password, invitnum}))
       } else {
         dispatch(errorMsg(res.data.msg))
       }
