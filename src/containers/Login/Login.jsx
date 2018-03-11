@@ -8,19 +8,26 @@ import {
   Col
 } from 'antd'
 import {Link} from 'react-router-dom'
+import {connect} from 'react-redux'
+import {login} from '../../redux/action/user.action'
 import Logo from '../../component/Logo/logo'
 const FormItem = Form.Item;
 
+@connect(state => state.user, {login})
 class Logins extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
+    this.state = {
+      user:'',
+      password:''
+    }
     this.handleSubmit = this.handleSubmit.bind(this)
   }
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        console.log('Received values of form: ', values);
+        this.props.login(values)
       }
     });
   }

@@ -1,4 +1,4 @@
-const utils = reuire('utility')
+const utils = require('utility')
 
 const md5Pwd = function (pwd) {
   const salt = 'XIT_Tla_teacher_pwd_$xitjisuanji#'

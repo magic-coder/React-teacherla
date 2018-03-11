@@ -20,3 +20,15 @@ export function register({user, password, invitnum}) {
     })
   }
 }
+
+export function login({user,password}) {
+  return dispatch => {
+    axios.post('/user/login', {user,password}).then(res => {
+      if (res.status===200&&res.data.code===0) {
+        dispatch(authSucess(res.data.data))
+      } else {
+        dispatch(errorMsg(res.data.msg))
+      }
+    })
+  }
+}

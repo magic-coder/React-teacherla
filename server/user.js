@@ -7,7 +7,7 @@ const md5Pwd = require('./util/util');
 
 //用户列表
 Router.get('/list', function(req, res) {
-  User.remove({}, function(e,d) {})
+  //User.remove({}, function(e,d) {})
   User.find({}, function(err, doc) {
     return res.json(doc)
   })
@@ -34,6 +34,17 @@ Router.get('/invitnum', function(req, res) {
   })
 })
 
+//登录
+Router.post('/login',function (req,res) {
+  const {user, password} = req.body
+  User.findOne({user,password:md5Pwd(password)},function (err,doc) {
+    if (!doc) {
+      return res.json({code:1,msg:'用户名或者密码错误'})
+    }
+    return res.json({code:0,data:doc})
+  })
+})
+
 //注册
 Router.post('/register', function(req, res) {
   console.log(req.body)
@@ -46,7 +57,7 @@ Router.post('/register', function(req, res) {
         if (doc) {
           return res.json({code: 1, msg: '邀请码错误'})
         } else {
-          User.create({user, md5Pwd(password)}, function(err, doc) {
+          User.create({user, password:md5Pwd(password)}, function(err, doc) {
             if (err) {
               return res.json({code: 1, msg: '后端出错了'})
             }
