@@ -3,10 +3,11 @@ const Router = express.Router()
 const model = require('./model')
 const User = model.getModel('user')
 const Check = model.getModel('check')
+const md5Pwd = require('./util/util');
 
 //用户列表
 Router.get('/list', function(req, res) {
-  //User.remove({}, function(e,d) {})
+  User.remove({}, function(e,d) {})
   User.find({}, function(err, doc) {
     return res.json(doc)
   })
@@ -45,7 +46,7 @@ Router.post('/register', function(req, res) {
         if (doc) {
           return res.json({code: 1, msg: '邀请码错误'})
         } else {
-          User.create({user,password}, function(err, doc) {
+          User.create({user, md5Pwd(password)}, function(err, doc) {
             if (err) {
               return res.json({code: 1, msg: '后端出错了'})
             }
