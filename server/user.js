@@ -14,18 +14,18 @@ Router.get('/list', function(req, res) {
 })
 
 //生成验证码
-// Router.get('/addinvitnum',function (req,res) {
-//   const {user,invitnum} = {
-//     user:'1403102043',
-//     invitnum:'234567'
-//   }
-//   Check.create({user,invitnum},function (err,doc) {
-//     if(err){
-//       return res.json({code:1,msg:'后端出错'});
-//     }
-//     return res.json({code:0})
-//   })
-// })
+Router.get('/addinvitnum',function (req,res) {
+  const {user,invitnum} = {
+    user:'1403102043',
+    invitnum:'234567'
+  }
+  Check.create({user,invitnum},function (err,doc) {
+    if(err){
+      return res.json({code:1,msg:'后端出错'});
+    }
+    return res.json({code:0})
+  })
+})
 
 //验证信息列表
 Router.get('/invitnum', function(req, res) {
