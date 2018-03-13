@@ -10,13 +10,13 @@ const models = {
   user:{
     'user':{'type':String,'require':true},
     'password':{'type':String,'require':true},
-    'teacher_name':{'type':String},
+    'teacher_name':{'type':String,'default':''},
     //头像
-    'avatar':{'type':String},
+    'avatar':{'type':String,'default':''},
     //简介
-    'desc':{'type':String},
+    'desc':{'type':String,'default':''},
     //职称
-    'title':{'type':String}
+    'title':{'type':String,'default':''}
   },
   course:{
     'classteacher':{'type':String,'require':true},

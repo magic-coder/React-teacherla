@@ -14,34 +14,34 @@ Router.get('/list', function(req, res) {
 })
 
 //生成验证码
-Router.get('/addinvitnum',function (req,res) {
-  const {user,invitnum} = {
-    user:'1403102043',
-    invitnum:'234567'
-  }
-  Check.create({user,invitnum},function (err,doc) {
-    if(err){
-      return res.json({code:1,msg:'后端出错'});
-    }
-    return res.json({code:0})
-  })
-})
+// Router.get('/addinvitnum',function (req,res) {
+//   const {user,invitnum} = {
+//     user:'1403102043',
+//     invitnum:'234567'
+//   }
+//   Check.create({user,invitnum},function (err,doc) {
+//     if(err){
+//       return res.json({code:1,msg:'后端出错'});
+//     }
+//     return res.json({code:0})
+//   })
+// })
 
 //验证信息列表
 Router.get('/invitnum', function(req, res) {
   Check.find({}, function(err, doc) {
     return res.json(doc)
   })
-})
+})ti mtim
 
 //登录
 Router.post('/login',function (req,res) {
   const {user, password} = req.body
-  User.findOne({user,password:md5Pwd(password)},function (err,doc) {
+  User.findOne({user,password:md5Pwd(password)},{password:0},function (err,doc) {
     if (!doc) {
-      return res.json({code:1,msg:'用户名或者密码错误'})
+      return res.json({code: 1,msg:'用户名或者密码错误'})
     }
-    return res.json({code:0,data:doc})
+    return res.json({code: 0,data:doc})
   })
 })
 
@@ -61,7 +61,7 @@ Router.post('/register', function(req, res) {
             if (err) {
               return res.json({code: 1, msg: '后端出错了'})
             }
-            return res.json({code: 0})
+            return res.json({code: 0,data:doc})
           })
         }
       })
