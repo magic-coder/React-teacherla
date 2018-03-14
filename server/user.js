@@ -32,10 +32,11 @@ Router.get('/invitnum', function(req, res) {
   Check.find({}, function(err, doc) {
     return res.json(doc)
   })
-})ti mtim
+})
 
 //登录
 Router.post('/login',function (req,res) {
+  console.log(req.body)
   const {user, password} = req.body
   User.findOne({user,password:md5Pwd(password)},{password:0},function (err,doc) {
     if (!doc) {

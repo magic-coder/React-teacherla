@@ -40,7 +40,7 @@ class Logins extends React.Component {
           <Form onSubmit={this.handleSubmit} className="login-form">
             <FormItem>
               {
-                getFieldDecorator('userName', {
+                getFieldDecorator('user', {
                   rules: [
                     {
                       required: true,
