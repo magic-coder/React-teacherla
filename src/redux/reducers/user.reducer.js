@@ -1,4 +1,5 @@
 import * as actionType from '../contants/user.contants'
+import {getRedirectPath} from '../../config/util'
 
 const initState = {
   redirectTo:'',
@@ -12,7 +13,7 @@ export default function user(state = initState,action) {
   switch (action.type) {
     case actionType.AUTH_SUCCESS:
       return {
-        ...state, msg:'',redirectTo:'',isAuth:true, ...action.payload
+        ...state, msg:'',redirectTo:getRedirectPath(action.payload),isAuth:true, ...action.payload
       }
     case actionType.ERROR_MSG:
       return {
