@@ -1,10 +1,11 @@
 import React from 'react'
-import { DatePicker, Icon, Card, Avatar} from 'antd';
-import moment from 'moment';
+import { DatePicker, Icon, Card, Avatar} from 'antd'
+import moment from 'moment'
+import { Link } from 'react-router-dom'
 
-const dateFormat = 'MM月DD日';
-const { Meta } = Card;
-const todayTime = moment(new Date()).format(dateFormat);
+const dateFormat = 'MM月DD日'
+const { Meta } = Card
+const todayTime = moment(new Date()).format(dateFormat)
 
 
 class VisitList extends React.PureComponent {
@@ -32,7 +33,7 @@ class VisitList extends React.PureComponent {
       <Card style={{
           marginTop: 20,
           width: '100%'
-        }} actions={[<div>{this.state.dateTime === todayTime ? '随堂听课' : '预约听课'}</div> , <div><Icon type="file-pdf" /> 课程资料</div>]}>
+        }} actions={[<div>{this.state.dateTime === todayTime ? '随堂听课' : '预约听课'}</div> , <div><Link to='/classstatus'><Icon type="file-pdf" /> 课程资料</Link></div>]}>
         <Meta avatar={<Avatar shape="square" icon="user" />} title="软件工程" description={<div > <p>上午第三节课</p>
           <p>任课老师：陈维斌</p>
         </div>}/>
@@ -40,7 +41,7 @@ class VisitList extends React.PureComponent {
       <Card style={{
           marginTop: 20,
           width: '100%'
-        }} actions={[<div>{this.state.dateTime === todayTime ? '随堂听课' : '预约听课'}</div> , <div><Icon type="file-pdf" /> 课程资料</div>]}>
+        }} actions={[<div>{this.state.dateTime === todayTime ? '随堂听课' : '预约听课'}</div> , <div><Link to='/classstatus'><Icon type="file-pdf" /> 课程资料</Link></div>]}>
         <Meta avatar={<Avatar shape="square" icon="user" />} title="软件工程" description={<div > <p>上午第三节课</p>
           <p>任课老师：陈维斌</p>
         </div>}/>
@@ -48,7 +49,7 @@ class VisitList extends React.PureComponent {
       <Card style={{
           marginTop: 20,
           width: '100%'
-        }} actions={[<div>{this.state.dateTime === todayTime ? '随堂听课' : '预约听课'}</div> , <div><Icon type="file-pdf" /> 课程资料</div>]}>
+        }} actions={[<div>{this.state.dateTime === todayTime ? '随堂听课' : '预约听课'}</div> , <div><Link to='/classstatus'><Icon type="file-pdf" /> 课程资料</Link></div>]}>
         <Meta avatar={<Avatar shape="square" icon="user" />} title="软件工程" description={<div > <p>上午第三节课</p>
           <p>任课老师：陈维斌</p>
         </div>}/>
@@ -56,15 +57,7 @@ class VisitList extends React.PureComponent {
       <Card style={{
           marginTop: 20,
           width: '100%'
-        }} actions={[<div>{this.state.dateTime === todayTime ? '随堂听课' : '预约听课'}</div> , <div><Icon type="file-pdf" /> 课程资料</div>]}>
-        <Meta avatar={<Avatar shape="square" icon="user" />} title="软件工程" description={<div > <p>上午第三节课</p>
-          <p>任课老师：陈维斌</p>
-        </div>}/>
-      </Card>
-      <Card style={{
-          marginTop: 20,
-          width: '100%'
-        }} actions={[<div>{this.state.dateTime === todayTime ? '随堂听课' : '预约听课'}</div> , <div><Icon type="file-pdf" /> 课程资料</div>]}>
+        }} actions={[<div>{this.state.dateTime === todayTime ? '随堂听课' : '预约听课'}</div> , <div><Link to='/classstatus'><Icon type="file-pdf" /> 课程资料</Link></div>]}>
         <Meta avatar={<Avatar shape="square" icon="user" />} title="软件工程" description={<div > <p>上午第三节课</p>
           <p>任课老师：陈维斌</p>
         </div>}/>

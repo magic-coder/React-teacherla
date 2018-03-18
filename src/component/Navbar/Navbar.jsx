@@ -1,5 +1,5 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import {Link,withRouter} from 'react-router-dom'
 import{
 Button,
 Layout,
@@ -11,6 +11,8 @@ Col
 } from 'antd'
 import Avatars from '../Avatars/Avatars'
 
+
+@withRouter
 class Navbar extends React.PureComponent {
   render(){
     const menu = (<Menu>
@@ -25,19 +27,36 @@ class Navbar extends React.PureComponent {
       </Menu.Item>
     </Menu>)
     const {Header} = Layout
+    const goBackList = ['/classstatus']
+    const pathname = this.props.location.pathname
+    console.log(this.props);
     return (
       <Header style={{
           padding: '0px 20px'
         }}>
         <Row type="flex" justify="space-between">
         <Col>
-        <Dropdown overlay={menu} trigger={['click']}>
-          <Button type="primary" style={{
+        {
+          goBackList.indexOf(pathname) > -1
+          ?
+          <Button
+            type="primary"
+            style={{
               marginBottom: 16
-            }}>
-            <Icon type="appstore" />
+            }}
+            onClick={this.props.history.goBack}
+          >
+            <Icon type="rollback" />
           </Button>
-        </Dropdown>
+          :
+          <Dropdown overlay={menu} trigger={['click']}>
+            <Button type="primary" style={{
+                marginBottom: 16
+              }}>
+              <Icon type="appstore" />
+            </Button>
+          </Dropdown>
+        }
         </Col>
         <Link to='/own'><Avatars/></Link>
         </Row>
