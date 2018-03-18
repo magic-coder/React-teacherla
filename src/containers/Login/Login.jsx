@@ -14,13 +14,9 @@ import Logo from '../../component/Logo/logo'
 const FormItem = Form.Item;
 
 @connect(state => state.user, {login})
-class Logins extends React.Component {
+class Logins extends React.PureComponent {
   constructor(props) {
     super(props)
-    this.state = {
-      user:'',
-      password:''
-    }
     this.handleSubmit = this.handleSubmit.bind(this)
   }
   handleSubmit = (e) => {

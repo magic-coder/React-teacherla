@@ -1,2 +1,9 @@
-export const AUTH_SUCCESS = 'AUTH_SUCCESS' // 验证成功
-export const ERROR_MSG = 'ERROR_MSG'
+const AUTH_SUCCESS = 'AUTH_SUCCESS' // 验证成功
+const ERROR_MSG = 'ERROR_MSG'
+const LOAD_DATA = 'LOAD_DATA'
+
+export {
+  AUTH_SUCCESS,
+  ERROR_MSG,
+  LOAD_DATA
+}

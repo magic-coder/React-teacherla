@@ -61,11 +61,15 @@ Router.post('/register', function(req, res) {
         if (doc) {
           return res.json({code: 1, msg: '邀请码错误'})
         } else {
-          User.create({user, password:md5Pwd(password)}, function(err, doc) {
+          const userModel = new User({user, password:md5Pwd(password)})
+          userModel.save(function (err,doc) {
             if (err) {
               return res.json({code: 1, msg: '后端出错了'})
+            }else{
+              const {user,_id} = doc
+              res.cookie('userid',_id)
+              return res.json({code:0,data:{user,_id}})
             }
-            return res.json({code: 0,data:doc})
           })
         }
       })
