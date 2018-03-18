@@ -21,6 +21,10 @@ export function register({user, password, invitnum}) {
   }
 }
 
+export function loadData(userinfo) {
+  return {type:actionType.LOAD_DATA,payload:userinfo}
+}
+
 export function login({user,password}) {
   return dispatch => {
     axios.post('/user/login', {user,password}).then(res => {

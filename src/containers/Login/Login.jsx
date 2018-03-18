@@ -7,20 +7,16 @@ import {
   Row,
   Col
 } from 'antd'
-import {Link} from 'react-router-dom'
+import {Link,Redirect} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {login} from '../../redux/action/user.action'
 import Logo from '../../component/Logo/logo'
 const FormItem = Form.Item;
 
 @connect(state => state.user, {login})
-class Logins extends React.Component {
+class Logins extends React.PureComponent {
   constructor(props) {
     super(props)
-    this.state = {
-      user:'',
-      password:''
-    }
     this.handleSubmit = this.handleSubmit.bind(this)
   }
   handleSubmit = (e) => {
@@ -34,6 +30,7 @@ class Logins extends React.Component {
   render() {
     const {getFieldDecorator} = this.props.form
     return (<div>
+      {this.props.redirectTo?<Redirect to={this.props.redirectTo}/>:null}
       <Logo/>
       <Row>
         <Col span={17} offset={3}>
