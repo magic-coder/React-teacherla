@@ -7,7 +7,7 @@ import {
   Row,
   Col
 } from 'antd'
-import {Link} from 'react-router-dom'
+import {Link,Redirect} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {login} from '../../redux/action/user.action'
 import Logo from '../../component/Logo/logo'
@@ -34,6 +34,7 @@ class Logins extends React.Component {
   render() {
     const {getFieldDecorator} = this.props.form
     return (<div>
+      {this.props.redirectTo?<Redirect to={this.props.redirectTo}/>:null}
       <Logo/>
       <Row>
         <Col span={17} offset={3}>
