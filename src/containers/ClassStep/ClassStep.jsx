@@ -4,13 +4,13 @@ import './classstep.css'
 const Step = Steps.Step;
 
 const steps = [{
-  title: 'First',
+  title: '课程准备',
   content: 'First-content',
 }, {
-  title: 'Second',
+  title: '听课阶段',
   content: 'Second-content',
 }, {
-  title: 'Last',
+  title: '课程评价',
   content: 'Last-content',
 }];
 
@@ -39,13 +39,13 @@ class ClassStep extends React.Component {
       </Steps>
       <div className="steps-content">{steps[this.state.current].content}</div>
       <div className="steps-action">
-        {this.state.current < steps.length - 1 && <Button type="primary" onClick={() => this.next()}>Next</Button>}
-        {this.state.current === steps.length - 1 && <Button type="primary" onClick={() => message.success('完成听课!')}>Done</Button>}
+        {this.state.current < steps.length - 1 && <Button type="primary" onClick={() => this.next()}>下一步</Button>}
+        {this.state.current === steps.length - 1 && <Button type="primary" onClick={() => message.success('完成听课!')}> 完成</Button>}
         {
           this.state.current > 0 && <Button style={{
                 marginLeft: 8
               }} onClick={() => this.prev()}>
-              Previous
+              上一步
             </Button>
         }
       </div>
