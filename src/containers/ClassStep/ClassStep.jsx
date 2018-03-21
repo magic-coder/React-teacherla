@@ -2,6 +2,8 @@ import React from 'react'
 import {Steps, Button, message} from 'antd';
 
 import ClassReadyStep from '../../component/ClassReadyStep/ClassReadyStep'
+import ClassOnStep from '../../component/ClassOnStep/ClassOnStep'
+import ClassFinalStep from '../../component/ClassFinalStep/ClassFinalStep'
 
 import './classstep.css'
 const Step = Steps.Step;
@@ -39,9 +41,9 @@ class ClassStep extends React.Component {
       case 0:
         return (<ClassReadyStep/>)
       case 1:
-        return (<div>1</div>)
+        return (<ClassOnStep/>)
       case 2:
-        return (<ClassReadyStep/>)
+        return (<ClassFinalStep/>)
       default:
         return null
     }

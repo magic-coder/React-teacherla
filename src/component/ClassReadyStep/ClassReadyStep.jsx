@@ -1,5 +1,4 @@
 import React from 'react'
-import { Input } from 'antd';
 
 class ClassReadyStep extends React.Component {
   render(){
