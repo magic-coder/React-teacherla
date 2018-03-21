@@ -34,7 +34,7 @@ class VisitList extends React.PureComponent {
           marginTop: 20,
           width: '100%'
         }} actions={[<div>{this.state.dateTime === todayTime ? '随堂听课' : '预约听课'}</div> , <div><Link to='/classstatus'><Icon type="file-pdf" /> 课程资料</Link></div>]}>
-        <Meta avatar={<Avatar shape="square" icon="user" />} title="软件工程" description={<div > <p>上午第三节课</p>
+        <Meta avatar={<Avatar shape="square" icon="user" />} title={<div>软件工程 <Icon type="star" /></div>} description={<div > <p>上午第三节课</p>
           <p>任课老师：陈维斌</p>
         </div>}/>
       </Card>
