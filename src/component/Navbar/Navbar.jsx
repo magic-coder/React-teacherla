@@ -26,7 +26,7 @@ class Navbar extends React.PureComponent {
         <Link to='/visitlist'>听课表</Link>
       </Menu.Item>
       <Menu.Item key="3">
-        <Link to='/classmustlist'>必听课</Link>
+        <Link to='/classmustlist'>计划表</Link>
       </Menu.Item>
     </Menu>)
     const {Header} = Layout

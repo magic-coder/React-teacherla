@@ -1,36 +1,63 @@
 import React from 'react'
-import { Icon, Card, Avatar } from 'antd';
-const { Meta } = Card;
+import {Card, Avatar, Divider} from 'antd';
+const {Meta} = Card;
 
 class ClassMustList extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      test:''
+      must_num: 5,
+      all_num: 10
     }
   }
-  render(){
-    return(
-      <div>
-      <h2>必听课列表</h2>
+  render() {
+    return (<div>
+      <h2>计划目标剩余
+      <span style={{
+          color: '#1890ff'
+        }}> {this.state.all_num} </span>
+      节 | 必听课剩余
+        <span style={{
+            color: '#1890ff'
+          }}> {this.state.must_num} </span>
+        节</h2>
+      <Divider>必听课程剩余列表</Divider>
       <Card style={{
           marginTop: 20,
           width: '100%'
-        }} actions={[<div>课程详情</div> , <div><Icon type="team" /> 听课教师</div>]}>
-        <Meta avatar={<Avatar shape="square" icon="user" />} title="软件工程" description={<div >
-          <p>上午第三节课</p>
+        }}>
+        <Meta avatar={<Avatar shape = "square" icon = "user" />} title="软件工程" description={<div > <p>陈维斌</p>
         </div>}/>
       </Card>
       <Card style={{
           marginTop: 20,
           width: '100%'
-        }} actions={[<div>课程详情</div> , <div><Icon type="team" /> 听课教师</div>]}>
-        <Meta avatar={<Avatar shape="square" icon="user" />} title="软件工程" description={<div >
-          <p>上午第三节课</p>
+        }}>
+        <Meta avatar={<Avatar shape = "square" icon = "user" />} title="软件工程" description={<div > <p>陈维斌</p>
         </div>}/>
       </Card>
-      </div>
-    )
+      <Card style={{
+          marginTop: 20,
+          width: '100%'
+        }}>
+        <Meta avatar={<Avatar shape = "square" icon = "user" />} title="软件工程" description={<div > <p>陈维斌</p>
+        </div>}/>
+      </Card>
+      <Card style={{
+          marginTop: 20,
+          width: '100%'
+        }}>
+        <Meta avatar={<Avatar shape = "square" icon = "user" />} title="软件工程" description={<div > <p>陈维斌</p>
+        </div>}/>
+      </Card>
+      <Card style={{
+          marginTop: 20,
+          width: '100%'
+        }}>
+        <Meta avatar={<Avatar shape = "square" icon = "user" />} title="软件工程" description={<div > <p>陈维斌</p>
+        </div>}/>
+      </Card>
+    </div>)
   }
 }
 
