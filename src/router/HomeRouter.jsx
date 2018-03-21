@@ -7,6 +7,7 @@ import ClassList from '../containers/ClassList/ClassList'
 import ClassStatus from '../containers/ClassStatus/ClassStatus'
 import VisitList from '../containers/VisitList/VisitList'
 import ClassStep from '../containers/ClassStep/ClassStep'
+import ClassMustList from '../containers/ClassMustList/ClassMustList';
 import NotFound from '../component/NotFound/NotFound'
 
 class HomeRouter extends React.PureComponent {
@@ -18,6 +19,7 @@ class HomeRouter extends React.PureComponent {
         <Route path='/visitlist' component={VisitList}/>
         <Route path='/classstatus' component={ClassStatus}/>
         <Route path='/class' component={ClassStep}/>
+        <Route path='/classmustlist' component={ClassMustList}/>
         <Route path='/own' component={Own}/>
         <Route component={NotFound}/>
       </Switch>

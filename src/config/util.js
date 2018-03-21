@@ -1,8 +1,5 @@
-export function getRedirectPath({avatar}) {
+export function getRedirectPath() {
   // 根据用户信息
-  let url = '/'
-  if (!avatar) {
-    url += 'complete'
-  }
+  let url = '/';
   return url
 }

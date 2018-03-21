@@ -17,13 +17,16 @@ class Navbar extends React.PureComponent {
   render(){
     const menu = (<Menu>
       <Menu.Item key="0">
-        <Link to='/'>主页</Link>
+        <Link to='/'>主 页</Link>
       </Menu.Item>
       <Menu.Item key="1">
         <Link to='/classlist'>课程表</Link>
       </Menu.Item>
       <Menu.Item key="2">
         <Link to='/visitlist'>听课表</Link>
+      </Menu.Item>
+      <Menu.Item key="3">
+        <Link to='/classmustlist'>必听课</Link>
       </Menu.Item>
     </Menu>)
     const {Header} = Layout

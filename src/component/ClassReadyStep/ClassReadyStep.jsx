@@ -4,7 +4,7 @@ import { Input } from 'antd';
 class ClassReadyStep extends React.Component {
   render(){
     return (<div>
-
+       test
       </div>)
   }
 }

@@ -11,7 +11,7 @@ class Home extends React.PureComponent {
       <h1 style={{
           marginTop: 10,
           marginBottom: 0
-        }}>今日课程推荐</h1>
+        }}>听课提醒</h1>
       <Card style={{
           width: '100%'
         }} cover={<img alt = "example" src = "https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png" />}>
