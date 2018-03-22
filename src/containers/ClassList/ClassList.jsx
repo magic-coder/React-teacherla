@@ -22,11 +22,11 @@ class ClassList extends React.Component {
       return  current  <= (new Date()).getTime()-1000*60*60*24;
     };
     return (<div>
-      <h2>
+      <h1>
         <span style={{
             color: '#1890ff'
           }}>{this.state.dateTime === todayTime ? '今天' : this.state.dateTime}</span>您要上的课程
-      </h2>
+      </h1>
       <DatePicker disabledDate={disabledDate} defaultValue={moment()} format={dateFormat} onChange={this.dateChange}/>
       <Card style={{
           marginTop: 20,

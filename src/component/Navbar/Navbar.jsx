@@ -30,7 +30,7 @@ class Navbar extends React.PureComponent {
       </Menu.Item>
     </Menu>)
     const {Header} = Layout
-    const goBackList = ['/classstatus']
+    const goBackList = ['/classstatus','/class']
     const pathname = this.props.location.pathname
     console.log(this.props);
     return (
