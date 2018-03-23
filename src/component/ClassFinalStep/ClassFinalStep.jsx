@@ -3,7 +3,7 @@ import React from 'react'
 class ClassFinalStep extends React.Component {
   render(){
     return (<div>
-       ClassFinalStep
+       结束组件
       </div>)
   }
 }
