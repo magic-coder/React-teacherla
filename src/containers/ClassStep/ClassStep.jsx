@@ -4,6 +4,7 @@ import {Steps, Button, message} from 'antd';
 import ClassReadyStep from '../../component/ClassReadyStep/ClassReadyStep'
 import ClassOnStep from '../../component/ClassOnStep/ClassOnStep'
 import ClassFinalStep from '../../component/ClassFinalStep/ClassFinalStep'
+import ClassNote from '../../component/ClassNote/ClassNote'
 
 import './classstep.css'
 const Step = Steps.Step;
@@ -12,7 +13,9 @@ const steps = [
   {
     title: '课程准备'
   }, {
-    title: '听课阶段'
+    title: '听课记录'
+  }, {
+    title: '听课打卡'
   }, {
     title: '课程评价'
   }
@@ -41,8 +44,10 @@ class ClassStep extends React.Component {
       case 0:
         return (<ClassReadyStep/>)
       case 1:
-        return (<ClassOnStep/>)
+        return (<ClassNote/>)
       case 2:
+        return (<ClassOnStep/>)
+      case 3:
         return (<ClassFinalStep/>)
       default:
         return null
