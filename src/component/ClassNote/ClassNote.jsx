@@ -12,7 +12,7 @@ class ClassNote extends React.Component {
             <TextArea placeholder="讲课内容" autosize={{ minRows: 4, maxRows: 12 }} />
           </TabPane>
           <TabPane tab="授课评价" key="2">
-            <TextArea placeholder="授课评价" autosize={{ minRows: 4, maxRows: 12 }} />
+            <TextArea placeholder="授课及课堂情况评价" autosize={{ minRows: 4, maxRows: 12 }} />
           </TabPane>
           <TabPane tab="意见建议" key="3">
             <TextArea placeholder="意见建议" autosize={{ minRows: 4, maxRows: 12 }} />
