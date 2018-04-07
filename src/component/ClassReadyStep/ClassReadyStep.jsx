@@ -1,5 +1,5 @@
 import React from 'react'
-import { Icon, Input } from 'antd';
+import { Input } from 'antd';
 
 
 class ClassReadyStep extends React.Component {
