@@ -1,5 +1,5 @@
 import React from 'react';
-import { Slider, InputNumber, Row, Col, Tabs, Divider } from 'antd';
+import { Slider, InputNumber, Row, Col, Tabs, Rate } from 'antd';
 const TabPane = Tabs.TabPane;
 
 class ClassFinalStep extends React.Component {
@@ -36,6 +36,12 @@ class ClassFinalStep extends React.Component {
            <p>板书规范，语言准确、表达生动</p>
          </TabPane>
          <TabPane tab="学生情况" key="table-2">
+            <p>遵守制度、按时到课、出勤率高</p>
+            <Rate count={4} defaultValue={1} />
+            <p>遵守课堂纪律，课堂秩序良好</p>
+            <Rate count={4} defaultValue={1} />
+            <p>听课精力集中，能积极思考，有较强的学习兴趣</p>
+            <Rate count={4} defaultValue={1} />
          </TabPane>
        </Tabs>
       </div>)
