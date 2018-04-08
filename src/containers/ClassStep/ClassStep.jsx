@@ -67,7 +67,9 @@ class ClassStep extends React.Component {
       <div className="steps-action">
         {this.state.current < steps.length - 1 && <Button type="primary" onClick={() => this.next()}>下一步</Button>}
         {
-          this.state.current === steps.length - 1 && <Button type="primary" onClick={() => message.success('完成听课!')}>
+          this.state.current === steps.length - 1 && <Button type="primary" onClick={() => {
+            message.success('完成听课!')
+          }}>
               完成</Button>
         }
         {
