@@ -5,7 +5,10 @@ const initState = {
   redirectTo:'',
   isAuth:'',
   msg:'',
-  user:''
+  user:'',
+  name:'',
+  department:'',
+  mobile:'',
 }
 
 export default function user(state = initState,action) {

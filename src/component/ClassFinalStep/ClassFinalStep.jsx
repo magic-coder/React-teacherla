@@ -4,7 +4,9 @@ const TabPane = Tabs.TabPane;
 
 class ClassFinalStep extends React.Component {
   state = {
-    inputValue: 1,
+    inputValue: {
+      
+    },
   }
   onChange = (value) => {
     this.setState({
