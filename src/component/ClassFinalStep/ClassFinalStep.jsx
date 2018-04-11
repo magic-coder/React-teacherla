@@ -4,11 +4,22 @@ const TabPane = Tabs.TabPane;
 
 class ClassFinalStep extends React.Component {
   state = {
-    inputValue: 1,
+    inputValue: {
+      val_1:'',
+      val_2:'',
+      val_3:'',
+      val_4:'',
+      val_5:'',
+      val_6:'',
+      val_7:'',
+      val_8:'',
+      val_9:'',
+      val_10:'',
+    },
   }
-  onChange = (value) => {
+  onChange = (key,value) => {
     this.setState({
-      inputValue: value,
+      [this.inputValue.key]: value,
     });
   }
   render(){
@@ -20,14 +31,14 @@ class ClassFinalStep extends React.Component {
             <Row>
              <Col span={2} />
              <Col span={12}>
-               <Slider min={1} max={10} onChange={this.onChange} value={this.state.inputValue} />
+               <Slider key="val_1" min={1} max={10} onChange={this.onChange} value={this.state.inputValue} />
              </Col>
              <Col span={2}>
                <InputNumber
                  min={1}
                  max={20}
                  style={{ marginLeft: 16 }}
-                 value={this.state.inputValue}
+                 value={this.state.inputValue.val_1}
                  onChange={this.onChange}
                />
              </Col>
@@ -36,14 +47,14 @@ class ClassFinalStep extends React.Component {
            <Row>
             <Col span={2} />
             <Col span={12}>
-              <Slider min={1} max={10} onChange={this.onChange} value={this.state.inputValue} />
+              <Slider key="val_2" min={1} max={10} onChange={this.onChange} value={this.state.inputValue} />
             </Col>
             <Col span={2}>
               <InputNumber
                 min={1}
                 max={20}
                 style={{ marginLeft: 16 }}
-                value={this.state.inputValue}
+                value={this.state.inputValue.val_2}
                 onChange={this.onChange}
               />
             </Col>
@@ -52,14 +63,14 @@ class ClassFinalStep extends React.Component {
            <Row>
             <Col span={2} />
             <Col span={12}>
-              <Slider min={1} max={10} onChange={this.onChange} value={this.state.inputValue} />
+              <Slider key="val_3" min={1} max={10} onChange={this.onChange} value={this.state.inputValue} />
             </Col>
             <Col span={2}>
               <InputNumber
                 min={1}
                 max={20}
                 style={{ marginLeft: 16 }}
-                value={this.state.inputValue}
+                value={this.state.inputValue.val_3}
                 onChange={this.onChange}
               />
             </Col>
@@ -68,14 +79,14 @@ class ClassFinalStep extends React.Component {
            <Row>
             <Col span={2} />
             <Col span={12}>
-              <Slider min={1} max={10} onChange={this.onChange} value={this.state.inputValue} />
+              <Slider key="val_4" min={1} max={10} onChange={this.onChange} value={this.state.inputValue} />
             </Col>
             <Col span={2}>
               <InputNumber
                 min={1}
                 max={20}
                 style={{ marginLeft: 16 }}
-                value={this.state.inputValue}
+                value={this.state.inputValue.val_4}
                 onChange={this.onChange}
               />
             </Col>
@@ -84,14 +95,14 @@ class ClassFinalStep extends React.Component {
            <Row>
             <Col span={2} />
             <Col span={12}>
-              <Slider min={1} max={10} onChange={this.onChange} value={this.state.inputValue} />
+              <Slider key="val_5" min={1} max={10} onChange={this.onChange} value={this.state.inputValue} />
             </Col>
             <Col span={2}>
               <InputNumber
                 min={1}
                 max={20}
                 style={{ marginLeft: 16 }}
-                value={this.state.inputValue}
+                value={this.state.inputValue.val_5}
                 onChange={this.onChange}
               />
             </Col>
@@ -100,14 +111,14 @@ class ClassFinalStep extends React.Component {
            <Row>
             <Col span={2} />
             <Col span={12}>
-              <Slider min={1} max={10} onChange={this.onChange} value={this.state.inputValue} />
+              <Slider key="val_6" min={1} max={10} onChange={this.onChange} value={this.state.inputValue} />
             </Col>
             <Col span={2}>
               <InputNumber
                 min={1}
                 max={20}
                 style={{ marginLeft: 16 }}
-                value={this.state.inputValue}
+                value={this.state.inputValue.val_6}
                 onChange={this.onChange}
               />
             </Col>
@@ -116,14 +127,14 @@ class ClassFinalStep extends React.Component {
            <Row>
             <Col span={2} />
             <Col span={12}>
-              <Slider min={1} max={10} onChange={this.onChange} value={this.state.inputValue} />
+              <Slider key="val_7" min={1} max={10} onChange={this.onChange} value={this.state.inputValue} />
             </Col>
             <Col span={2}>
               <InputNumber
                 min={1}
                 max={20}
                 style={{ marginLeft: 16 }}
-                value={this.state.inputValue}
+                value={this.state.inputValue.val_7}
                 onChange={this.onChange}
               />
             </Col>
@@ -132,14 +143,14 @@ class ClassFinalStep extends React.Component {
            <Row>
             <Col span={2} />
             <Col span={12}>
-              <Slider min={1} max={10} onChange={this.onChange} value={this.state.inputValue} />
+              <Slider key="val_8" min={1} max={10} onChange={this.onChange} value={this.state.inputValue} />
             </Col>
             <Col span={2}>
               <InputNumber
                 min={1}
                 max={20}
                 style={{ marginLeft: 16 }}
-                value={this.state.inputValue}
+                value={this.state.inputValue.val_8}
                 onChange={this.onChange}
               />
             </Col>
@@ -148,14 +159,14 @@ class ClassFinalStep extends React.Component {
            <Row>
             <Col span={2} />
             <Col span={12}>
-              <Slider min={1} max={10} onChange={this.onChange} value={this.state.inputValue} />
+              <Slider key="val_9" min={1} max={10} onChange={this.onChange} value={this.state.inputValue} />
             </Col>
             <Col span={2}>
               <InputNumber
                 min={1}
                 max={20}
                 style={{ marginLeft: 16 }}
-                value={this.state.inputValue}
+                value={this.state.inputValue.val_9}
                 onChange={this.onChange}
               />
             </Col>
@@ -164,14 +175,14 @@ class ClassFinalStep extends React.Component {
            <Row>
             <Col span={2} />
             <Col span={12}>
-              <Slider min={1} max={10} onChange={this.onChange} value={this.state.inputValue} />
+              <Slider key="val_10" min={1} max={10} onChange={this.onChange} value={this.state.inputValue} />
             </Col>
             <Col span={2}>
               <InputNumber
                 min={1}
                 max={20}
                 style={{ marginLeft: 16 }}
-                value={this.state.inputValue}
+                value={this.state.inputValue.val_10}
                 onChange={this.onChange}
               />
             </Col>
