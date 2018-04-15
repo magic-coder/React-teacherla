@@ -24,9 +24,9 @@ class AuthRouter extends React.PureComponent {
     axios.get(`http://120.78.86.5/api/v1/user/info/1`).then((res,req) => {
       console.log(res,req);
       if (res.status === 200) {
-        this.props.loadData(res.data)
+        this.props.loadData(res.data);
       }else{
-        this.props.history.push('/login')
+        this.props.history.push('/login');
       }
     }).catch(function (err) {
       console.log(err);
