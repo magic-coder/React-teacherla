@@ -1,5 +1,6 @@
 import React from 'react'
-import { Avatar, Card } from 'antd';
+import { Avatar, Card, Button } from 'antd';
+import { clearAllCookie } from '../../config/util';
 const { Meta } = Card;
 
 class Own extends React.PureComponent {
@@ -8,13 +9,24 @@ class Own extends React.PureComponent {
       <Card
         hoverable="hoverable"
         style={{
-          marginTop: 20,
+          marginTop: 5,
           width: '100%'
         }}
-        actions={[<div>未听课记录</div>,<div>已听课记录</div>]}
+        actions={[<div>消息列表</div>,]}
         cover={<div style={{textAlign:'center',paddingTop:'20px'}}><Avatar icon="smile" /></div>}>
         <Meta style={{textAlign:'center'}} title={<div style={{color:'#1890ff'}}>陈维斌</div>} description="教授"/>
       </Card>
+      <div style={{
+        textAlign: 'center',
+      }}>
+        <Button type="danger" style={{
+          marginTop: 30,
+          width: '60%'
+        }} onClick={() => {
+          clearAllCookie();
+          window.location.reload();
+        }}>注销</Button>
+      </div>
     </div>)
   }
 }

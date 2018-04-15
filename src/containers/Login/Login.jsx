@@ -7,7 +7,7 @@ import {
   Row,
   Col
 } from 'antd'
-import {Link,Redirect} from 'react-router-dom'
+import {Redirect} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {login} from '../../redux/action/user.action'
 import Logo from '../../component/Logo/logo'
@@ -63,9 +63,6 @@ class Logins extends React.PureComponent {
               <Button type="primary" htmlType="submit" style={{
                   width: '100%'
                 }}>登录</Button>
-            </FormItem>
-            <FormItem>
-              <Link to='/register'>跳转注册</Link>
             </FormItem>
           </Form>
         </Col>
