@@ -5,16 +5,6 @@ const TabPane = Tabs.TabPane;
 class ClassFinalStep extends React.Component {
   state = {
     inputValue: {
-      val_1:'',
-      val_2:'',
-      val_3:'',
-      val_4:'',
-      val_5:'',
-      val_6:'',
-      val_7:'',
-      val_8:'',
-      val_9:'',
-      val_10:'',
     },
   }
   onChange = (key,value) => {
