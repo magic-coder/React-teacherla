@@ -4,7 +4,6 @@ import {withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {loadData} from '../../redux/action/user.action'
 import { getCookie } from '../../config/util'
-import { Message } from 'antd'
 
 @withRouter
 @connect(

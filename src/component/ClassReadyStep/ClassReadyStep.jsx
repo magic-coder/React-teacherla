@@ -7,7 +7,7 @@ class ClassReadyStep extends React.Component {
     return (<div>
        <h4>请填写表单</h4>
        <div style={{ marginBottom: 16 }}>
-         <Input addonBefore="应到人数" disabled />
+         <Input addonBefore="应到人数" type="number" />
        </div>
        <div style={{ marginBottom: 16 }}>
          <Input addonBefore="实到人数" type="number" />
