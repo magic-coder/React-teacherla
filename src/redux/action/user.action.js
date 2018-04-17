@@ -1,12 +1,15 @@
 import * as actionType from '../contants/user.contants'
+import { API, URL} from '../contants/content'
 import axios from 'axios'
 import { setCookie } from '../../config/util'
+import { message } from 'antd'
 
 function authSucess(data) {
   return {type:actionType.AUTH_SUCCESS, payload:data}
 }
 
 function errorMsg(msg) {
+  message.error(msg);
   return {type:actionType.ERROR_MSG, msg}
 }
 
@@ -14,20 +17,38 @@ export function loadData(userinfo) {
   return {type:actionType.LOAD_DATA,payload:userinfo}
 }
 
-export function login({user,password}) {
+function teacherList(teacherList) {
+  return { type: actionType.TEACHER_LIST, payload: teacherList }
+}
+
+export function login({ user, password }) {
   return dispatch => {
-    axios.post(`http://120.78.86.5/api/user/login?`,
+    axios.post(URL+API.USER.LOGIN,
       {
         mobile:user,
         pwd:password,
       }
     ).then(res => {
       if (res.status === 200 && res.data.code === 0) {
-        const { userid, token } = res.data.data;
-        setCookie('userid', userid);
+        const { user_id, token } = res.data.data;
+        setCookie('user_id', user_id);
         setCookie('token', token);
-        console.log(res);
         dispatch(authSucess(res.data.data))
+      } else {
+        dispatch(errorMsg(res.data.msg))
+      }
+    })
+  }
+}
+
+export function teachList({ userid, token}) {
+  return dispatch => {
+    axios.post(URL + API.USER.TECHLIST,{
+      userid: userid,
+      token: token,
+    }).then(res => {
+      if (res.status === 200 && res.data.code === 0) {
+        dispatch(teacherList(res.data.data))
       } else {
         dispatch(errorMsg(res.data.msg))
       }

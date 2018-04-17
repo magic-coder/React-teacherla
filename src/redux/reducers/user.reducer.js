@@ -5,12 +5,14 @@ const initState = {
   redirectTo:'',
   isAuth:'',
   msg:'',
-  userid:'',
-  name:'',
+  user_id:'',
+  teacher_name:'',
+  teacher_type:'',
   department:'',
   user:'',
   avatar:'',
   token:'',
+  teacherList:'',
 }
 
 export default function user(state = initState,action) {
@@ -27,7 +29,11 @@ export default function user(state = initState,action) {
       return {
         ...state, msg:action.msg, isAuth:false
       }
+    case actionType.TEACHER_LIST:
+      return {
+        ...state, teacherList: action.payload
+      }
     default:
-      return state;
+      return state; 
   }
 }

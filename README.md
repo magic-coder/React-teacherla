@@ -11,9 +11,6 @@
 
 * React
 * Redux
-* Express
-    - Express依赖cookie-parser
-* MongoDB
 
 #### 第三方库
 
