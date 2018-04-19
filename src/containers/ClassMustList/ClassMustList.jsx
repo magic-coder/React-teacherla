@@ -26,7 +26,7 @@ class ClassMustList extends React.Component {
           }}> {this.state.must_num} </span>
         节</h2>
       <Divider>必听课程剩余列表</Divider>
-      {this.props.teachList !== ''
+      {this.props.teachList !== []
        ?this.props.teachList.forEach(element => {
           return(
             <Card style={{
