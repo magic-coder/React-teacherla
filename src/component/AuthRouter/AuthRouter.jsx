@@ -8,7 +8,7 @@ import { getCookie } from '../../config/util'
 @withRouter
 @connect(
   state => state.user,
-  { loadData, teachList }
+    { loadData, teachList }
 )
 
 class AuthRouter extends React.PureComponent {

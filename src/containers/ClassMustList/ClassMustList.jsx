@@ -3,7 +3,7 @@ import { Card, Avatar, Divider } from 'antd';
 import { connect } from 'react-redux'
 const { Meta } = Card;
 
-@connect(state => state.user,)
+@connect(state => state.user)
 class ClassMustList extends React.Component {
   constructor(props) {
     super(props)
@@ -26,10 +26,10 @@ class ClassMustList extends React.Component {
           }}> {this.state.must_num} </span>
         节</h2>
       <Divider>必听课程剩余列表</Divider>
-      {this.props.teachList !== []
-       ?this.props.teachList.forEach(element => {
+      {this.props.teacherList !== []
+        ? this.props.teacherList.map(element => {
           return(
-            <Card style={{
+            <Card key={element.teacher_id} style={{
               marginTop: 20,
               width: '100%'
             }}>
