@@ -8,7 +8,7 @@ function authSucess(data) {
   return {type:actionType.AUTH_SUCCESS, payload:data}
 }
 
-function errorMsg(msg) {
+export function errorMsg(msg) {
   message.error(msg);
   return {type:actionType.ERROR_MSG, msg}
 }
@@ -41,7 +41,7 @@ export function login({ user, password }) {
   }
 }
 
-export function teachList({ userid, token}) {
+export function teachList({ userid, token }) {
   return dispatch => {
     axios.post(URL + API.USER.TECHLIST,{
       userid: userid,

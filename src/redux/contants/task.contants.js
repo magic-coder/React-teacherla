@@ -1,0 +1,9 @@
+const GETTASK = 'GETTASK';
+const ADDTASK = 'ADDTASK';
+const DELETETASK = 'DELETETASK';
+
+export { 
+    GETTASK,
+    ADDTASK,
+    DELETETASK
+};
