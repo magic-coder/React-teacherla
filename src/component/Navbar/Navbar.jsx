@@ -7,17 +7,19 @@ Icon,
 Menu,
 Dropdown,
 Row,
-Col
+Col,
+Avatar
 } from 'antd'
-import Avatars from '../Avatars/Avatars'
+import {connect} from 'react-redux'
 
 
 @withRouter
+@connect(state=>state.user,)
 class Navbar extends React.PureComponent {
   render(){
     const menu = (<Menu>
       <Menu.Item key="0">
-        <Link to='/'>主 页</Link>
+        <Link to='/'>主  页</Link>
       </Menu.Item>
       <Menu.Item key="1">
         <Link to='/classlist'>课程表</Link>
@@ -26,7 +28,7 @@ class Navbar extends React.PureComponent {
         <Link to='/visitlist'>听课表</Link>
       </Menu.Item>
       <Menu.Item key="3">
-        <Link to='/classmustlist'>计划表</Link>
+        <Link to='/classmustlist'>任务表</Link>
       </Menu.Item>
     </Menu>)
     const {Header} = Layout
@@ -61,7 +63,7 @@ class Navbar extends React.PureComponent {
           </Dropdown>
         }
         </Col>
-        <Link to='/own'><Avatars/></Link>
+          <Link to='/own'><Avatar shape="square" src={this.props.avatar}/></Link>
         </Row>
       </Header>
     )

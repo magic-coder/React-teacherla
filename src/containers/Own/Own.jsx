@@ -1,8 +1,10 @@
 import React from 'react'
 import { Avatar, Card, Button } from 'antd';
+import { connect } from 'react-redux'
 import { clearAllCookie } from '../../config/util';
 const { Meta } = Card;
 
+@connect(state => state.user)
 class Own extends React.PureComponent {
   render() {
     return (<div >
@@ -13,8 +15,13 @@ class Own extends React.PureComponent {
           width: '100%'
         }}
         actions={[<div>消息列表</div>,]}
-        cover={<div style={{textAlign:'center',paddingTop:'20px'}}><Avatar icon="smile" /></div>}>
-        <Meta style={{textAlign:'center'}} title={<div style={{color:'#1890ff'}}>陈维斌</div>} description="教授"/>
+        cover={
+          <div style={{textAlign:'center',paddingTop:'20px'}}>
+            <Avatar size="large" shape="square" src={this.props.avatar} />
+          </div>
+        }
+      >
+        <Meta style={{ textAlign: 'center' }} title={<div style={{ color: '#1890ff' }}>{this.props.teacher_name}</div>} description={this.props.department}/>
       </Card>
       <div style={{
         textAlign: 'center',
