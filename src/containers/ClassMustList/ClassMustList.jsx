@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, Avatar, Divider } from 'antd';
+import { Card, Avatar, Divider, Button, Icon } from 'antd';
 import { connect } from 'react-redux'
 import { getTask } from '../../redux/action/task.action'
 import { getCookie } from '../../config/util'
@@ -15,28 +15,53 @@ class ClassMustList extends React.Component {
   render() {
     console.log(this.props)
     return (<div>
-      <h2>计划目标剩余
+      <h2>必须听课
       <span style={{
           color: '#1890ff'
-        }}> {this.props.task.num.appointundone} </span>
-      节 | 必听课剩余
+        }}> {this.props.task.num.appoint} </span>
+      节 | 自由听课
         <span style={{
             color: '#1890ff'
-        }}> {this.props.task.num.freeundone} </span>
+        }}> {this.props.task.num.free} </span>
         节</h2>
-      <Divider>必听课程剩余列表</Divider>
-      {this.props.task.task !== 0
+      <Button type="primary"><Icon type="plus-circle" /> 添加期望听课教师</Button>
+      <Divider>必须听课剩余 <span style={{
+        color: '#1890ff'
+      }}>{this.props.task.num.appointundone}</span> 节</Divider>
+      {this.props.task.task.length !== 0
         ? this.props.task.task.map(element => {
-          return(
-            <Card key={element.task_id} style={{
-              marginTop: 20,
-              width: '100%'
-            }}>
-              <Meta avatar={<Avatar shape="square" src={element.avatar} />} title={element.teacher_name} />
-            </Card>
-          )
+          if(element.task_type === 1){
+            return (
+              <Card key={element.task_id} style={{
+                marginTop: 20,
+                width: '100%'
+              }}>
+                <Meta avatar={<Avatar shape="square" src={element.avatar} />} title={element.teacher_name} />
+              </Card>
+            )
+          }
+          return null
         })
         :null
+      }
+      <Divider>自由听课剩余 <span style={{
+        color: '#1890ff'
+      }}>{this.props.task.num.freeundone}</span> 节</Divider>
+      {this.props.task.task.length !== 0
+        ? this.props.task.task.map(element => {
+          if (element.task_type === 2) {
+            return (
+              <Card key={element.task_id} style={{
+                marginTop: 20,
+                width: '100%'
+              }}>
+                <Meta avatar={<Avatar shape="square" src={element.avatar} />} title={element.teacher_name} />
+              </Card>
+            )
+          }
+          return null
+        })
+        : null
       }
     </div>)
   }

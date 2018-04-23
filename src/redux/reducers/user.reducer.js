@@ -1,9 +1,10 @@
 import * as actionType from '../contants/user.contants'
 import {getRedirectPath} from '../../config/util'
+import moment from 'moment'
 
 const initState = {
+  dateToday: moment(new Date()).format('YYYY-MM-DD'),
   redirectTo:'',
-  isAuth:'',
   msg:'',
   user_id:'',
   teacher_name:'',
@@ -19,7 +20,7 @@ export default function user(state = initState,action) {
   switch (action.type) {
     case actionType.AUTH_SUCCESS:
       return {
-        ...state, msg:'',redirectTo:getRedirectPath(action.payload),isAuth:true, ...action.payload
+        ...state, msg:'',redirectTo:getRedirectPath(action.payload), ...action.payload
       }
     case actionType.LOAD_DATA:
       return {

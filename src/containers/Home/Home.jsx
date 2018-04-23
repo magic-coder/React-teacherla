@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card , Avatar, Icon} from 'antd'
+import { Card, Avatar, Icon } from 'antd'
 import { connect } from 'react-redux'
 import {Link} from 'react-router-dom'
 import { getPlan } from '../../redux/action/plan.action'
@@ -17,23 +17,55 @@ class Home extends React.PureComponent {
     this.props.getPlan({ userid: user_id, token: access_token });
   }
   render() {
-    console.log(this.props)
+    const today = this.props.user.dateToday;
     return (<div>
       <Carousels/>
+      {this.props.plan.plan.some((element) => {
+        return element.datetime === today
+      })
+        ? <h1 style={{
+          marginTop: 10,
+          marginBottom: 0,
+          color: 'red'
+        }}>今日听课提醒</h1>
+      : null
+      }
+      {this.props.plan.plan.length !== 0
+        ?
+          this.props.plan.plan.map((element) => {
+              if (element.datetime === today) {
+                return (
+                  <Card
+                    loading
+                    key={element.attend_id}
+                    style={{
+                      width: '100%',
+                      marginTop: 10,
+                    }}
+                    actions={[<div>课程详情</div>, <div><Link to='/classstatus'><Icon type="file-pdf" /> 课程资料</Link></div>]}
+                  >
+                    <Meta avatar={<Avatar src={element.avatar} />} title={element.course_name} description={<div>
+                      <p>时间：{element.datetime} 第{element.weeks}周 {element.which_day} {element.section}节</p>
+                      <p>地点：{element.place}</p>
+                      <p>任课老师：{element.teacher_name}</p>
+                    </div>} />
+                  </Card>
+                )
+              }
+              return null
+            })
+        : null
+      }
       <h1 style={{
           marginTop: 10,
           marginBottom: 0,
-          color:'red'
-        }}>今日听课提醒</h1>
-      <h1 style={{
-          marginTop: 10,
-          marginBottom: 0
-        }}>听课排表</h1>
+          color: '#1890ff'
+      }}>听课排表 <Icon type="table" /></h1>
       {this.props.plan.plan.length !== 0 
        ? this.props.plan.plan.map((element) => {
          if (element.plan_status === 0) {
            return (
-             <Card 
+             <Card
                 key={element.attend_id} 
                 style={{
                   width: '100%',
