@@ -10,7 +10,7 @@ export default function plan(state = initState, action) {
     switch (action.type) {
         case actionType.GETDOCOURSE:
             return {
-                ...state, doCourse : action.payload.data
+                ...state, doCourse : action.payload
             }
         case actionType.GETCOURSEDETAIL:
             return {

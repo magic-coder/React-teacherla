@@ -1,5 +1,5 @@
 import React from 'react'
-import { DatePicker, Icon, Card, Avatar } from 'antd';
+import { DatePicker, Icon, Card } from 'antd';
 import moment from 'moment';
 import { connect } from 'react-redux';
 import { getCookie } from '../../config/util'
@@ -25,13 +25,17 @@ class ClassList extends React.Component {
   }
 
   dateChange(v, str) {
+    console.log(v.format(timeFormat))
     this.setState({
       dateTime: str,
       time: v.format(timeFormat),
-    }, this.getChange())
+    },()=>{
+      this.getChange()
+    })
   }
 
   getChange(){
+    console.log(this.state.time)
     this.props.getDoCourse({
       userid: user_id,
       token: access_token,
@@ -41,11 +45,16 @@ class ClassList extends React.Component {
   }
 
   componentDidMount(){
-    this.getChange();
+    this.props.getDoCourse({
+      userid: user_id,
+      token: access_token,
+      datetime: this.state.time,
+      teacherid: user_id,
+    });
   }
 
   render() {
-    console.log(this.props);
+    console.log(this.state);
     const disabledDate = function (current) {
       return  current  <= (new Date()).getTime()-1000*60*60*24;
     };
@@ -56,30 +65,29 @@ class ClassList extends React.Component {
           }}>{this.state.dateTime === todayTime ? '今天' : this.state.dateTime}</span>您要上的课程
       </h1>
       <DatePicker disabledDate={disabledDate} defaultValue={moment()} format={dateFormat} onChange={this.dateChange}/>
-      <Card style={{
-          marginTop: 20,
-          width: '100%'
-        }} actions={[<div>课程详情</div> , <div><Icon type="team" /> 听课教师</div>]}>
-        <Meta avatar={<Avatar shape="square" icon="user" />} title="软件工程" description={<div >
-          <p>上午第三节课</p>
-        </div>}/>
-      </Card>
-      <Card style={{
-          marginTop: 20,
-          width: '100%'
-        }} actions={[<div>课程详情</div> , <div><Icon type="team" /> 听课教师</div>]}>
-        <Meta avatar={<Avatar shape="square" icon="user" />} title="软件工程" description={<div >
-          <p>上午第三节课</p>
-        </div>}/>
-      </Card>
-      <Card style={{
-          marginTop: 20,
-          width: '100%'
-        }} actions={[<div>课程详情</div> , <div><Icon type="team" /> 听课教师</div>]}>
-        <Meta avatar={<Avatar shape="square" icon="user" />} title="软件工程" description={<div >
-          <p>上午第三节课</p>
-        </div>}/>
-      </Card>
+      {
+        this.props.course.doCourse.length !== 0
+          ? this.props.course.doCourse.map(element => {
+              return (
+                <Card
+                  key={element.attend_id}
+                  style={{
+                    width: '100%',
+                    marginTop: 10,
+                  }}
+                  actions={[<div>课程详情</div>, <div><Icon type="team" /> 听课教师</div>]}
+                >
+                  <Meta title={element.course_name} description={<div>
+                    <p>时间：{element.datetime} {element.which_day} {element.section}节</p>
+                    <p>地点：{element.place}</p>
+                    <p>班级：{element.grade}级{element.class_name}</p>
+                  </div>} />
+                </Card>
+              )
+            }
+          )
+          : <div>无需要上的课程</div>
+      }
     </div>)
   }
 }
