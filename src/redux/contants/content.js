@@ -7,9 +7,19 @@ export const API = {
     },
     TASK: {
         GETTASK: '/listentask/getTask',
+        ADDTASK: '/listentask/addtask',
+        DELETETASK: '/listentask/deletetask',
     },
     PLAN: {
         GETPLAN: '/listenplan/getplan',
+        DELETETPALN: '/listenplan/deleteplan',
+        ADDPLANFROMC: '/listenplan/ddplanbycrs',
+        ADDPLANFROMT: '/listenplan/teacher'
+    },
+    COURSE: {
+        GETDOCOURSE: '/attendcourse/getatdcourse',
+        GETCOURSEDETAIL: '/attendcourse/getcoursedetail',
+        GETLECOURSE: '/attendcourse/getcancourse',
     }
 }
 
