@@ -18,7 +18,6 @@ export function getDoCourse({ datetime, userid, token, teacherid}) {
             teacherid: teacherid,
         }).then(res => {
             if (res.status === 200 && res.data.code === 0) {
-                console.log(res.data);
                 dispatch(doCourse(res.data.data))
             } else {
                 dispatch(errorMsg(res.data.msg))

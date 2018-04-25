@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import { message } from 'antd'
 import {withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
 import { loadData } from '../../redux/action/user.action'
@@ -17,7 +18,6 @@ class AuthRouter extends React.PureComponent {
     return null
   }
   componentWillMount() {
-    console.log(this.props)
     const publicList = ['/login', '/register']
     const pathname = this.props.location.pathname
     const user_id = getCookie('user_id');
@@ -38,7 +38,7 @@ class AuthRouter extends React.PureComponent {
         this.props.history.push('/login');
       }
     }).catch(function (err) {
-      console.log(err);
+      message.error(err);
     });
   }
 }
