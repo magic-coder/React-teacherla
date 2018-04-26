@@ -25,7 +25,6 @@ class ClassList extends React.Component {
   }
 
   dateChange(v, str) {
-    console.log(v.format(timeFormat))
     this.setState({
       dateTime: str,
       time: v.format(timeFormat),
@@ -35,7 +34,6 @@ class ClassList extends React.Component {
   }
 
   getChange(){
-    console.log(this.state.time)
     this.props.getDoCourse({
       userid: user_id,
       token: access_token,
@@ -54,7 +52,6 @@ class ClassList extends React.Component {
   }
 
   render() {
-    console.log(this.state);
     const disabledDate = function (current) {
       return  current  <= (new Date()).getTime()-1000*60*60*24;
     };

@@ -34,7 +34,6 @@ class Navbar extends React.PureComponent {
     const {Header} = Layout
     const goBackList = ['/classstatus','/class']
     const pathname = this.props.location.pathname
-    console.log(this.props);
     return (
       <Header style={{
           padding: '0px 20px'
