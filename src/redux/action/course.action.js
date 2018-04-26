@@ -48,3 +48,24 @@ export function getLECourse({ datetime, userid, token }) {
         })
     }
 }
+
+function getCourse(data) {
+    return { type: actionType.GETCOURSEDETAIL, payload: data }
+}
+
+export function getCourseDetail({ courseid, userid, token }) {
+    return dispatch => {
+        axios.post(URL + API.COURSE.GETCOURSEDETAIL, {
+            token: token,
+            userid: userid,
+            courseid: courseid,
+        }).then(res => {
+            if (res.status === 200 && res.data.code === 0) {
+                dispatch(getCourse(res.data.data))
+            } else {
+                dispatch(errorMsg(res.data.msg))
+                dispatch(getCourse({}))
+            }
+        })
+    }
+}

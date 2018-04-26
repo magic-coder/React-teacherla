@@ -17,8 +17,8 @@ class HomeRouter extends React.PureComponent {
         <Route path='/' exact component={Home}/>
         <Route path='/classlist' component={ClassList}/>
         <Route path='/visitlist' component={VisitList}/>
-        <Route path='/classstatus/:teacherId' component={ClassStatus}/>
-        <Route path='/class/:courseId' component={ClassStep}/>
+        <Route path='/classstatus/:courseid' component={ClassStatus}/>
+        <Route path='/class/:courseid' component={ClassStep}/>
         <Route path='/classmustlist' component={ClassMustList}/>
         <Route path='/own' component={Own}/>
         <Route component={NotFound}/>

@@ -73,7 +73,7 @@ class Home extends React.PureComponent {
                 }}
                 actions={[<div>课程详情</div>, <div><Link to='/classstatus'><Icon type="file-pdf" /> 课程资料</Link></div>]}
              >
-               <Meta avatar={<Avatar src={element.avatar} />} title={element.course_name} description={<div>
+               <Meta avatar={<Avatar shape="square" src={element.avatar} />} title={element.course_name} description={<div>
                  <p>时间：{element.datetime} 第{element.weeks}周 {element.which_day} {element.section}节</p>
                  <p>地点：{element.place}</p>
                  <p>任课老师：{element.teacher_name}</p>

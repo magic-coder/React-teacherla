@@ -1,5 +1,5 @@
 import React from 'react'
-import { DatePicker, Icon, Card } from 'antd'
+import { DatePicker, Icon, Card, Avatar } from 'antd'
 import moment from 'moment'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
@@ -56,7 +56,6 @@ class VisitList extends React.PureComponent {
   }
 
   render() {
-    console.log(this.props);
     const disabledDate = function (current) {
       return  current  <= (new Date()).getTime()-1000*60*60*24;
     };
@@ -85,7 +84,7 @@ class VisitList extends React.PureComponent {
                     <Link to={`/classstatus/${element.course_id}`}><Icon type="file-pdf" /> 课程资料</Link>
                   </div>]}
             >
-              <Meta title={element.course_name} description={<div>
+              <Meta avatar={<Avatar shape="square" src={element.avatar} />} title={element.course_name} description={<div>
                 <p>时间：{element.datetime} 第{element.weeks}周 {element.which_day} {element.section}节</p>
                 <p>地点：{element.place}</p>
                 <p>任课老师：{element.teacher_name}</p>
