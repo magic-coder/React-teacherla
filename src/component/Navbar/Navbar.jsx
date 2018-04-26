@@ -32,7 +32,7 @@ class Navbar extends React.PureComponent {
       </Menu.Item>
     </Menu>)
     const {Header} = Layout
-    const goBackList = ['/classstatus','/class']
+    const goBackList = ['/classstatus/','/class/']
     const pathname = this.props.location.pathname
     return (
       <Header style={{
@@ -41,7 +41,9 @@ class Navbar extends React.PureComponent {
         <Row type="flex" justify="space-between">
         <Col>
         {
-          goBackList.indexOf(pathname) > -1
+          goBackList.some((element)=>{
+            return pathname.indexOf(element) !== -1 ? true : false
+          }) 
           ?
           <Button
             type="primary"

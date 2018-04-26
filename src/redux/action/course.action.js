@@ -26,3 +26,25 @@ export function getDoCourse({ datetime, userid, token, teacherid}) {
         })
     }
 }
+
+function leCourse(data) {
+    return { type: actionType.GETLECOURSE, payload: data }
+}
+
+
+export function getLECourse({ datetime, userid, token }) {
+    return dispatch => {
+        axios.post(URL + API.COURSE.GETLECOURSE, {
+            token: token,
+            userid: userid,
+            datetime: datetime,
+        }).then(res => {
+            if (res.status === 200 && res.data.code === 0) {
+                dispatch(leCourse(res.data.data))
+            } else {
+                dispatch(errorMsg(res.data.msg))
+                dispatch(leCourse([]))
+            }
+        })
+    }
+}

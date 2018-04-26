@@ -14,11 +14,11 @@ export default function plan(state = initState, action) {
             }
         case actionType.GETCOURSEDETAIL:
             return {
-                ...state, courseDetail : action.payload.data
+                ...state, courseDetail : action.payload
             }
         case actionType.GETLECOURSE:
             return {
-                ...state, lsCourse : action.payload.data
+                ...state, lsCourse : action.payload
             }
         default:
             return state;
