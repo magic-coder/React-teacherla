@@ -13,7 +13,6 @@ class ClassMustList extends React.Component {
     this.props.getTask({ userid: user_id, token: access_token });
   }
   render() {
-    console.log(this.props);
     return (<div>
       <h2>必须听课
       <span style={{
