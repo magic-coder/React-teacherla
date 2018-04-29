@@ -3,6 +3,7 @@ import * as actionType from '../contants/course.contants'
 const initState = {
     doCourse: [],
     lsCourse: [],
+    choseplan: [],
     courseDetail:{},
 }
 

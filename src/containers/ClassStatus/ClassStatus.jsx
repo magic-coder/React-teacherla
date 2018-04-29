@@ -4,9 +4,6 @@ import { connect } from 'react-redux'
 import { getCookie } from '../../config/util'
 import { getCourseDetail } from '../../redux/action/course.action';
 
-const user_id = getCookie('user_id');
-const access_token = getCookie('token');
-
 const gridStyle_1 = {
   width: '35%',
   height: '100%',
@@ -22,8 +19,8 @@ const gridStyle_2 = {
 class ClassStatus extends React.PureComponent {
   componentWillMount(){
     this.props.getCourseDetail({
-      userid: user_id,
-      token: access_token,
+      userid: getCookie('user_id'),
+      token: getCookie('token'),
       ...this.props.match.params,
     })  
   }

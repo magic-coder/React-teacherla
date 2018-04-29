@@ -9,6 +9,7 @@ import VisitList from '../containers/VisitList/VisitList'
 import ClassStep from '../containers/ClassStep/ClassStep'
 import ClassMustList from '../containers/ClassMustList/ClassMustList';
 import NotFound from '../component/NotFound/NotFound'
+import Choseplan from '../containers/Choseplan/Choseplan';
 
 class HomeRouter extends React.PureComponent {
   render() {
@@ -18,7 +19,8 @@ class HomeRouter extends React.PureComponent {
         <Route path='/classlist' component={ClassList}/>
         <Route path='/visitlist' component={VisitList}/>
         <Route path='/classstatus/:courseid' component={ClassStatus}/>
-        <Route path='/class/:courseid' component={ClassStep}/>
+        <Route path='/classstep/:courseid' component={ClassStep}/>
+        <Route path='/choseplan/:teacherid' component={Choseplan} />
         <Route path='/classmustlist' component={ClassMustList}/>
         <Route path='/own' component={Own}/>
         <Route component={NotFound}/>

@@ -9,8 +9,6 @@ const dateFormat = 'MM月DD日';
 const timeFormat = 'YYYY-MM-DD'
 const { Meta } = Card;
 const todayTime = moment(new Date()).format(dateFormat);
-const user_id = getCookie('user_id');
-const access_token = getCookie('token');
 
 @connect(state => state, { getDoCourse, })
 class ClassList extends React.Component {
@@ -19,6 +17,8 @@ class ClassList extends React.Component {
     this.state = {
       dateTime: moment(new Date()).format(dateFormat),
       time: moment(new Date()).format(timeFormat),
+      user_id: getCookie('user_id'),
+      access_token:getCookie('token')
     }
     this.dateChange = this.dateChange.bind(this)
     this.getChange = this.getChange.bind(this)
@@ -35,19 +35,19 @@ class ClassList extends React.Component {
 
   getChange(){
     this.props.getDoCourse({
-      userid: user_id,
-      token: access_token,
+      userid: this.state.user_id,
+      token: this.state.access_token,
       datetime: this.state.time,
-      teacherid: user_id,
+      teacherid: this.state.user_id,
     });
   }
 
   componentDidMount(){
     this.props.getDoCourse({
-      userid: user_id,
-      token: access_token,
+      userid: this.state.user_id,
+      token: this.state.access_token,
       datetime: this.state.time,
-      teacherid: user_id,
+      teacherid: this.state.user_id,
     });
   }
 
@@ -83,7 +83,10 @@ class ClassList extends React.Component {
               )
             }
           )
-          : <div>无需要上的课程</div>
+          : <div style={{
+            textAlign: 'center',
+            marginTop: '50%',
+          }}>无需要上的课程</div>
       }
     </div>)
   }

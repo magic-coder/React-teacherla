@@ -3,11 +3,9 @@ import { API, URL } from '../contants/content';
 import axios from 'axios';
 import { errorMsg } from "./user.action";
 
-
 function doCourse(data) {
     return { type: actionType.GETDOCOURSE, payload: data }
 }
-
 
 export function getDoCourse({ datetime, userid, token, teacherid}) {
     return dispatch => {
@@ -30,7 +28,6 @@ export function getDoCourse({ datetime, userid, token, teacherid}) {
 function leCourse(data) {
     return { type: actionType.GETLECOURSE, payload: data }
 }
-
 
 export function getLECourse({ datetime, userid, token }) {
     return dispatch => {

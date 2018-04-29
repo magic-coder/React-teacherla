@@ -10,8 +10,6 @@ const dateFormat = 'MM月DD日';
 const timeFormat = 'YYYY-MM-DD'
 const { Meta } = Card;
 const todayTime = moment(new Date()).format(dateFormat);
-const user_id = getCookie('user_id');
-const access_token = getCookie('token');
 
 @connect(state => state, { getLECourse})
 class VisitList extends React.PureComponent {
@@ -20,6 +18,8 @@ class VisitList extends React.PureComponent {
     this.state = {
       dateTime: moment(new Date()).format(dateFormat),
       time: moment(new Date()).format(timeFormat),
+      user_id: getCookie('user_id'),
+      access_token: getCookie('token')
     }
     this.dateChange = this.dateChange.bind(this)
     this.getChange = this.getChange.bind(this)
@@ -37,8 +37,8 @@ class VisitList extends React.PureComponent {
 
   getChange() {
     this.props.getLECourse({
-      userid: user_id,
-      token: access_token,
+      userid: this.state.user_id,
+      token: this.state.access_token,
       datetime: this.state.time,
     });
   }
@@ -49,8 +49,8 @@ class VisitList extends React.PureComponent {
 
   componentDidMount() {
     this.props.getLECourse({
-      userid: user_id,
-      token: access_token,
+      userid: this.state.user_id,
+      token: this.state.access_token,
       datetime: this.state.time,
     });
   }
@@ -66,7 +66,7 @@ class VisitList extends React.PureComponent {
           }}>{this.state.dateTime === todayTime ? '今天' : this.state.dateTime}</span>可以听的课
       </h1>
       <DatePicker allowClear='false' disabledDate={disabledDate} defaultValue={moment()} format={dateFormat} onChange={this.dateChange}/>
-      {this.props.course.lsCourse !== 0
+      {this.props.course.lsCourse.length !== 0
         ? this.props.course.lsCourse.map((element) => {
           return (
             <Card
@@ -77,8 +77,8 @@ class VisitList extends React.PureComponent {
               }}
               actions={
                 [<div>{this.state.dateTime === todayTime 
-                  ? <div><Link to="class">随堂听课</Link></div> 
-                  : '预约听课'}
+                  ? <div><Link to={`/classstep/${element.course_id}`}>随堂听课</Link></div> 
+                  : <div>预约听课</div>}
                   </div>,
                   <div>
                     <Link to={`/classstatus/${element.course_id}`}><Icon type="file-pdf" /> 课程资料</Link>
@@ -92,7 +92,10 @@ class VisitList extends React.PureComponent {
             </Card>
           )
         })
-        : <div>无可听课程</div>
+        : <div style={{
+          textAlign: 'center',
+          marginTop: '50%',
+        }}>无可听课程</div>
       }
     </div>)
   }
