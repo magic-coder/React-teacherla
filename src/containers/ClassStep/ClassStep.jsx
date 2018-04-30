@@ -15,9 +15,9 @@ const steps = [
   }, {
     title: '听课记录'
   }, {
-    title: '听课打卡'
-  }, {
     title: '课程评价'
+  }, {
+    title: '听课打卡'
   }
 ];
 
@@ -27,9 +27,9 @@ class ClassStep extends React.Component {
     this.state = {
       current: 0
     };
-    this.next = this.next.bind(this)
-    this.prev = this.prev.bind(this)
-    this.content = this.content.bind(this)
+    this.next = this.next.bind(this);
+    this.prev = this.prev.bind(this);
+    this.content = this.content.bind(this);
   }
   next() {
     const current = this.state.current + 1;
@@ -42,13 +42,13 @@ class ClassStep extends React.Component {
   content() {
     switch (this.state.current) {
       case 0:
-        return (<ClassReadyStep/>)
+        return (<ClassReadyStep />)
       case 1:
-        return (<ClassNote/>)
+        return (<ClassNote />)
       case 2:
-        return (<ClassOnStep/>)
+        return (<ClassFinalStep />)
       case 3:
-        return (<ClassFinalStep/>)
+        return (<ClassOnStep />)
       default:
         return null
     }
