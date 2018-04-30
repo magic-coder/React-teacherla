@@ -6,7 +6,6 @@ import { getTask } from '../../redux/action/task.action'
 import { teachList } from '../../redux/action/user.action'
 import { getCookie } from '../../config/util'
 const { Meta } = Card;
-const ButtonGroup = Button.Group;
 
 @connect(state => state, { getTask, teachList})
 class ClassMustList extends React.Component {
@@ -55,10 +54,10 @@ class ClassMustList extends React.Component {
                   avatar={<Avatar shape="square" src={element.avatar} />}
                   title={
                     <div>{element.teacher_name}
-                      <ButtonGroup style={{ float: 'right' }}>
-                        <Button><Link to={`/choseplan/${element.teaching_teacher_id}`}>选择课程</Link></Button>
-                        <Button>OK</Button>
-                      </ButtonGroup>
+                        <Button style={{ float: 'right' }}>
+                          <Link to={`/choseplan/${element.teaching_teacher_id}`}>选择课程
+                          </Link>
+                        </Button>
                     </div>
                   }
                 />
@@ -73,7 +72,7 @@ class ClassMustList extends React.Component {
                   marginTop: 10,
                 }}
                 actions={
-                  [<div>预约听课</div>,
+                  [<div>取消听课</div>,
                   <div>
                     <Link to={`/classstatus/${element.course_id}`}><Icon type="file-pdf" /> 课程资料</Link>
                   </div>]}
@@ -144,35 +143,77 @@ class ClassMustList extends React.Component {
       {
         this.props.task.task.length !== 0
         ? this.props.task.task.map(element => {
-          if (element.task_type === 2) {
-            return (
-              <Card 
-                key={element.task_id} 
-                style={{
-                  marginTop: 20,
-                  width: '100%'
-                }}
-                actions={[
-                  <div>
-                    ok
-                  </div>,
-                  <div>
-                    cancel
-                  </div>
-                ]}
-              >
-                <Meta 
-                  avatar={<Avatar 
-                    shape="square" 
-                    src={element.avatar} />
-                  } 
-                  title={element.teacher_name}
-                />
-              </Card>
-            )
-          }
-          return null
-        })
+            if (element.task_type === 2 && element.task_status === 0) {
+              return (
+                <Card
+                  key={element.task_id}
+                  style={{
+                    marginTop: 20,
+                    width: '100%'
+                  }}
+                >
+                  <Meta
+                    avatar={<Avatar shape="square" src={element.avatar} />}
+                    title={
+                      <div>{element.teacher_name}
+                        <Button style={{ float: 'right' }}>
+                          <Link to={`/choseplan/${element.teaching_teacher_id}`}>选择课程
+                          </Link>
+                        </Button>
+                      </div>
+                    }
+                  />
+                </Card>
+              )
+            } else if (element.task_type === 2 && element.task_status === 1) {
+              return (
+                <Card
+                  key={element.task_id}
+                  style={{
+                    width: '100%',
+                    marginTop: 10,
+                  }}
+                  actions={
+                    [<div>取消听课</div>,
+                    <div>
+                      <Link to={`/classstatus/${element.course_id}`}><Icon type="file-pdf" /> 课程资料</Link>
+                    </div>]}
+                >
+                  <Meta
+                    avatar={<Avatar shape="square" src={element.avatar} />}
+                    title={element.course_name}
+                    description={
+                      <div>
+                        <p>时间：{element.datetime} 第{element.weeks}周 {element.which_day} {element.section}节</p>
+                        <p>地点：{element.place}</p>
+                        <p>任课老师：{element.teacher_name}</p>
+                      </div>
+                    }
+                  />
+                </Card>
+              )
+            } else if (element.task_type === 2 && element.task_status === 2) {
+              return (
+                <Card
+                  key={element.task_id}
+                  style={{
+                    marginTop: 20,
+                    width: '100%'
+                  }}
+                >
+                  <Meta
+                    avatar={<Avatar shape="square" src={element.avatar} />}
+                    title={
+                      <div>{element.teacher_name}
+                        <Button style={{ float: 'right' }} disabled>已完成</Button>
+                      </div>
+                    }
+                  />
+                </Card>
+              )
+            }
+            return null
+          })
         :<div style={{
           textAlign: 'center',
           marginTop: '50%',

@@ -9,15 +9,14 @@ import { getDoCourse } from '../../redux/action/course.action';
 const dateFormat = 'MM月DD日';
 const timeFormat = 'YYYY-MM-DD'
 const { Meta } = Card;
-const todayTime = moment(new Date()).format(dateFormat);
 
 @connect(state => state, { getDoCourse, })
 class Choseplan extends React.Component {
     constructor() {
         super()
         this.state = {
-            dateTime: moment(new Date()).format(dateFormat),
-            time: moment(new Date()).format(timeFormat),
+            dateTime: moment().add(1, 'days').format(dateFormat),
+            time: moment().add(1, 'days').format(timeFormat),
             user_id: getCookie('user_id'),
             access_token: getCookie('token')
         }
@@ -54,15 +53,15 @@ class Choseplan extends React.Component {
 
     render() {
         const disabledDate = function (current) {
-            return current <= (new Date()).getTime() - 1000 * 60 * 60 * 24;
+            return current <= moment().add(1, 'days') - 1000 * 60 * 60 * 24;
         };
         return (<div>
             <h1>
                 <span style={{
                     color: '#1890ff'
-                }}>{this.state.dateTime === todayTime ? '今天' : this.state.dateTime}</span>的课
+                }}>{this.state.dateTime}</span>的课
             </h1>
-            <DatePicker disabledDate={disabledDate} defaultValue={moment()} format={dateFormat} onChange={this.dateChange} />
+            <DatePicker disabledDate={disabledDate} defaultValue={moment().add(1, 'days')} format={dateFormat} onChange={this.dateChange} />
             {
                 this.props.course.doCourse.length !== 0
                     ? this.props.course.doCourse.map(element => {
@@ -74,9 +73,7 @@ class Choseplan extends React.Component {
                                     marginTop: 10,
                                 }}
                                 actions={
-                                    [<div>{this.state.dateTime === todayTime
-                                        ? <div><Link to={`/classstep/${element.course_id}`}>随堂听课</Link></div>
-                                        : <div>预约听课</div>}
+                                    [<div>{<div>预约听课</div>}
                                     </div>,
                                     <div>
                                         <Link to={`/classstatus/${element.attend_id}`}><Icon type="file-pdf" /> 课程资料</Link>

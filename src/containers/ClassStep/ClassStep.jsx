@@ -73,11 +73,13 @@ class ClassStep extends React.Component {
               完成</Button>
         }
         {
-          this.state.current > 0 && <Button style={{
-                marginLeft: 8
-              }} onClick={() => this.prev()}>
-              上一步
-            </Button>
+          this.state.current > 0 && <Button
+            style={{
+              marginLeft: 8
+            }}
+            onClick={() => this.prev()}>
+            上一步
+          </Button>
         }
       </div>
     </div>)
