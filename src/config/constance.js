@@ -1,6 +1,10 @@
-export const CONSTANTS = {
-  API: {
-    LOGIN:'http://120.78.86.5/api/v1/',
-    LOGOUT:''
-  }
+const timer = {
+  '1-2': '08:30',
+  '3-4': '10:30',
+  '5-6': '14:30',
+  '7-8': '16:20',
+}
+
+export {
+  timer
 }

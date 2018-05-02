@@ -57,6 +57,7 @@ class Choseplan extends React.Component {
         const disabledDate = function (current) {
             return current <= moment().add(1, 'days') - 1000 * 60 * 60 * 24;
         };
+        console.log(this.props.history)
         return (<div>
             <h1>
                 <span style={{
