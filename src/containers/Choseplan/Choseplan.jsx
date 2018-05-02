@@ -1,5 +1,5 @@
 import React from 'react'
-import { DatePicker, Icon, Card } from 'antd'
+import { DatePicker, Icon, Card, Modal ,message } from 'antd'
 import moment from 'moment'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
@@ -9,6 +9,8 @@ import { getDoCourse } from '../../redux/action/course.action';
 const dateFormat = 'MM月DD日';
 const timeFormat = 'YYYY-MM-DD'
 const { Meta } = Card;
+const confirm = Modal.confirm;
+
 
 @connect(state => state, { getDoCourse, })
 class Choseplan extends React.Component {
@@ -73,7 +75,18 @@ class Choseplan extends React.Component {
                                     marginTop: 10,
                                 }}
                                 actions={
-                                    [<div>{<div>预约听课</div>}
+                                    [<div onClick={()=>{
+                                      const goBack = this.props.history.goBack;
+                                      confirm({
+                                        title: '确定是否添加该课程',
+                                        onOk() {
+                                          message.info('添加完成',5,goBack())
+                                        },
+                                        onCancel() {
+                                          console.log('Cancel');
+                                        },
+                                      });
+                                    }}>预约听课
                                     </div>,
                                     <div>
                                         <Link to={`/classstatus/${element.attend_id}`}><Icon type="file-pdf" /> 课程资料</Link>

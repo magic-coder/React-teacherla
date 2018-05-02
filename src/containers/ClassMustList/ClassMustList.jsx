@@ -43,7 +43,7 @@ class ClassMustList extends React.Component {
         ? this.props.task.task.map(element => {
           if (element.task_type === 1 && element.task_status === 0){
             return (
-              <Card 
+              <Card
                 key={element.task_id}
                 style={{
                   marginTop: 20,
@@ -63,7 +63,7 @@ class ClassMustList extends React.Component {
                 />
               </Card>
             )
-          } else if (element.task_type === 1 && element.task_status === 1) {
+          } else if (element.task_type === 1 && element.task_status === 2) {
             return (
               <Card
                 key={element.task_id}
@@ -77,20 +77,20 @@ class ClassMustList extends React.Component {
                     <Link to={`/classstatus/${element.course_id}`}><Icon type="file-pdf" /> 课程资料</Link>
                   </div>]}
               >
-                <Meta 
-                  avatar={<Avatar shape="square" src={element.avatar} />} 
-                  title={element.course_name} 
+                <Meta
+                  avatar={<Avatar shape="square" src={element.avatar} />}
+                  title={element.teacher_name}
                   description={
                     <div>
+                      <p>课程名称：{element.course_name}</p>
                       <p>时间：{element.datetime} 第{element.weeks}周 {element.which_day} {element.section}节</p>
                       <p>地点：{element.place}</p>
-                      <p>任课老师：{element.teacher_name}</p>
                     </div>
                   }
                 />
               </Card>
             )
-          } else if (element.task_type === 1 && element.task_status === 2) {
+          } else if (element.task_type === 1 && element.task_status === 1) {
             return (
               <Card
                 key={element.task_id}
@@ -176,7 +176,7 @@ class ClassMustList extends React.Component {
                   actions={
                     [<div>取消听课</div>,
                     <div>
-                      <Link to={`/classstatus/${element.course_id}`}><Icon type="file-pdf" /> 课程资料</Link>
+                      <Link to={`/classstatus/${element.teaching_teacher_id}`}><Icon type="file-pdf" /> 课程资料</Link>
                     </div>]}
                 >
                   <Meta

@@ -61,17 +61,17 @@ class Home extends React.PureComponent {
           marginBottom: 0,
           color: '#1890ff'
       }}>听课排表 <Icon type="table" /></h1>
-      {this.props.plan.plan.length !== 0 
+      {this.props.plan.plan.length !== 0
        ? this.props.plan.plan.map((element) => {
          if (element.plan_status === 0) {
            return (
              <Card
-                key={element.attend_id} 
+                key={element.attend_id}
                 style={{
                   width: '100%',
                   marginTop: 10,
                 }}
-               actions={[<div>课程详情</div>, <div><Link to={`/classstatus/${element.attend_id}`}><Icon type="file-pdf" /> 课程资料</Link></div>]}
+               actions={[<div><Link to={`/classstep/${element.attend_id}`}>课程详情</Link></div>, <div><Link to={`/classstatus/${element.attend_id}`}><Icon type="file-pdf" /> 课程资料</Link></div>]}
              >
                <Meta avatar={<Avatar shape="square" src={element.avatar} />} title={element.course_name} description={<div>
                  <p>时间：{element.datetime} 第{element.weeks}周 {element.which_day} {element.section}节</p>
