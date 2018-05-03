@@ -20,7 +20,8 @@ class Choseplan extends React.Component {
             dateTime: moment().add(1, 'days').format(dateFormat),
             time: moment().add(1, 'days').format(timeFormat),
             user_id: getCookie('user_id'),
-            access_token: getCookie('token')
+            access_token: getCookie('token'),
+            task_id:window.location.hash.substring(1)
         }
         this.dateChange = this.dateChange.bind(this)
         this.getChange = this.getChange.bind(this)
@@ -57,7 +58,6 @@ class Choseplan extends React.Component {
         const disabledDate = function (current) {
             return current <= moment().add(1, 'days') - 1000 * 60 * 60 * 24;
         };
-        console.log(this.props.history)
         return (<div>
             <h1>
                 <span style={{
