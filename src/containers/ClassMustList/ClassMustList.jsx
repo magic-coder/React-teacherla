@@ -55,7 +55,7 @@ class ClassMustList extends React.Component {
                   title={
                     <div>{element.teacher_name}
                         <Button style={{ float: 'right' }}>
-                          <Link to={`/choseplan/${element.teaching_teacher_id}`}>选择课程
+                          <Link to={`/choseplan/${element.teaching_teacher_id}#${element.task_id}`}>选择课程
                           </Link>
                         </Button>
                     </div>
@@ -157,7 +157,7 @@ class ClassMustList extends React.Component {
                     title={
                       <div>{element.teacher_name}
                         <Button style={{ float: 'right' }}>
-                          <Link to={`/choseplan/${element.teaching_teacher_id}`}>选择课程
+                          <Link to={`/choseplan/${element.teaching_teacher_id}#${element.task_id}`}>选择课程
                           </Link>
                         </Button>
                       </div>
@@ -165,7 +165,7 @@ class ClassMustList extends React.Component {
                   />
                 </Card>
               )
-            } else if (element.task_type === 2 && element.task_status === 1) {
+            } else if (element.task_type === 2 && element.task_status === 2) {
               return (
                 <Card
                   key={element.task_id}
@@ -192,7 +192,7 @@ class ClassMustList extends React.Component {
                   />
                 </Card>
               )
-            } else if (element.task_type === 2 && element.task_status === 2) {
+            } else if (element.task_type === 2 && element.task_status === 1) {
               return (
                 <Card
                   key={element.task_id}

@@ -1,9 +1,13 @@
 import * as actionType from '../contants/user.contants'
 import {getRedirectPath} from '../../config/util'
-import moment from 'moment'
+import moment from 'moment';
+import 'moment/locale/zh-cn'
+
+moment.locale('zh-cn');
 
 const initState = {
   dateToday: moment(new Date()).format('YYYY-MM-DD'),
+  timeCheck: moment().format('LT'),
   redirectTo:'',
   msg:'',
   user_id:'',
@@ -35,6 +39,6 @@ export default function user(state = initState,action) {
         ...state, teacherList: action.payload
       }
     default:
-      return state; 
+      return state;
   }
 }
