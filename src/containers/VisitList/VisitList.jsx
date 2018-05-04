@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { getCookie } from '../../config/util'
 import { getLECourse } from '../../redux/action/course.action';
+import { addPlanFromC } from '../../redux/action/plan.action';
 import { timer } from '../../config/constance'
 
 const dateFormat = 'MM月DD日';
@@ -13,7 +14,7 @@ const { Meta } = Card;
 const confirm = Modal.confirm;
 const todayTime = moment(new Date()).format(dateFormat);
 
-@connect(state => state, { getLECourse})
+@connect(state => state, { getLECourse, addPlanFromC})
 class VisitList extends React.PureComponent {
   constructor() {
     super()
@@ -72,18 +73,25 @@ class VisitList extends React.PureComponent {
         ? this.props.course.lsCourse.map((element) => {
           let checkIn = '课程完结';
           if (timer[element.section] > this.props.user.timeCheck){
-              checkIn = '等待听课'
+            checkIn = (<div onClick={()=> {
+              const props = this.props;
+              const state = this.state;
+              confirm({
+                title: '确定是否添加该课程',
+                okText: '确定',
+                cancelText: '取消',
+                onOk() {
+                    props.addPlanFromC({
+                      attendid: element.attend_id,
+                      token: state.access_token,
+                      userid: state.user_id,
+                      teacherid: element.teacher_id
+                    })
+                },
+              });
+            }}>预约听课</div>)
           } else if (timer[element.section] < this.props.user.timeCheck && this.props.course.endTime[element.section] > this.props.user.timeCheck) {
-              checkIn = (<div onClick={()=> {
-                confirm({
-                  title: '确定是否添加该课程',
-                  okText: '确定',
-                  cancelText: '取消',
-                  onOk() {
-
-                  },
-                });
-              }} to={`/classstep/${element.attend_id}`}>随堂</div>)
+              checkIn = '正在上课'
           } else if (this.props.course.endTime[element.section] < this.props.user.timeCheck) {
               checkIn = '课程完结'
           }

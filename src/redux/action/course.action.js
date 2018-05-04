@@ -24,7 +24,6 @@ export function makemark({
   section,
   place,
   coursename,
-  needtime,
   t1,
   t2,
   t3,
@@ -42,7 +41,7 @@ export function makemark({
   stotal,
 }) {
     return dispatch => {
-        axios.post(URL + API.MARK.ADDQREMARK, {
+        axios.post(URL + API.MARK.ADDLESSON, {
           token,
           userid,
           planid,
@@ -58,10 +57,40 @@ export function makemark({
           section,
           place,
           coursename,
-          needtime,
-        }).then(
-
-        )
+        }).then((res)=>{
+          if (res.data.code === 0) {
+              axios.post(URL + API.MARK.ADDQREMARK, {
+                token,
+                userid,
+                planid,
+                t1,
+                t2,
+                t3,
+                t4,
+                t5,
+                t6,
+                t7,
+                t8,
+                t9,
+                t10,
+                ttotal,
+                s1,
+                s2,
+                s3,
+                stotal,
+                date,
+                classname,
+              }).then((res)=> {
+                  if (res.data.code === 0) {
+                      window.history.back();
+                  } else {
+                      dispatch(errorMsg(res.data.msg))
+                  }
+              })
+          } else {
+              dispatch(errorMsg(res.data.msg))
+          }
+        })
     }
 }
 

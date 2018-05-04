@@ -1,16 +1,17 @@
 import React from 'react'
-import { DatePicker, Icon, Card } from 'antd';
+import { DatePicker, Icon, Card, Modal, Avatar } from 'antd';
 import moment from 'moment';
 import { connect } from 'react-redux';
 import { getCookie } from '../../config/util'
 import { getDoCourse } from '../../redux/action/course.action';
+import { getTeacherList } from '../../redux/action/user.action';
 
 const dateFormat = 'MM月DD日';
 const timeFormat = 'YYYY-MM-DD'
 const { Meta } = Card;
 const todayTime = moment(new Date()).format(dateFormat);
 
-@connect(state => state, { getDoCourse, })
+@connect(state => state, { getDoCourse, getTeacherList })
 class ClassList extends React.Component {
   constructor() {
     super()
@@ -18,11 +19,20 @@ class ClassList extends React.Component {
       dateTime: moment(new Date()).format(dateFormat),
       time: moment(new Date()).format(timeFormat),
       user_id: getCookie('user_id'),
-      access_token:getCookie('token')
+      access_token:getCookie('token'),
+      showAddTeacherModal: false
     }
     this.dateChange = this.dateChange.bind(this)
     this.getChange = this.getChange.bind(this)
+    this.handleCancel = this.handleCancel.bind(this)
   }
+
+  handleCancel = () => {
+    this.setState({
+      showAddTeacherModal: false,
+    });
+  }
+
 
   dateChange(v, str) {
     this.setState({
@@ -72,7 +82,16 @@ class ClassList extends React.Component {
                     width: '100%',
                     marginTop: 10,
                   }}
-                  actions={[<div>课程详情</div>, <div><Icon type="team" /> 听课教师</div>]}
+                  actions={[<div>课程详情</div>, <div onClick={()=>{
+                    this.props.getTeacherList({
+                      userid: this.state.user_id,
+                      token: this.state.access_token,
+                      attendid: element.attend_id
+                    })
+                    this.setState({
+                      showAddTeacherModal: true,
+                    })
+                  }}><Icon type="team" /> 听课教师</div>]}
                 >
                   <Meta title={element.course_name} description={<div>
                     <p>时间：{element.datetime} {element.which_day} {element.section}节</p>
@@ -88,6 +107,31 @@ class ClassList extends React.Component {
             marginTop: '50%',
           }}>无需要上的课程</div>
       }
+      <Modal
+        title="选择教师"
+        visible={this.state.showAddTeacherModal}
+        onCancel={this.handleCancel}
+      >
+        {
+          this.props.user.teacherList.length !== 0
+          ? this.props.user.teacherList.map(element => {
+              return (
+                <Card key={element.teacher_id} style={{
+                  marginTop: 20,
+                  width: '100%'
+                }}>
+                  <Meta avatar={<Avatar shape="square" src={element.avatar} />} title={element.teacher_name} />
+                </Card>
+              )
+          })
+          : <div style={{
+            textAlign: 'center',
+            marginTop: '10px',
+          }}>
+            无
+          </div>
+        }
+      </Modal>
     </div>)
   }
 }

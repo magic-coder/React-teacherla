@@ -4,6 +4,7 @@ export const API = {
         LOGIN: '/user/login',
         TECHLIST: '/user/gettchlist',
         USERINFO: '/user/getinfo',
+        GETLSTECH: '/user/getlsntchlist',
     },
     TASK: {
         GETTASK: '/listentask/getTask',
@@ -14,7 +15,8 @@ export const API = {
         GETPLAN: '/listenplan/getplan',
         DELETETPALN: '/listenplan/deleteplan',
         ADDPLANFROMC: '/listenplan/ddplanbycrs',
-        ADDPLANFROMT: '/listenplan/addplanbytask'
+        ADDPLANFROMT: '/listenplan/addplanbytask',
+        STARTPLAN: '/listenplan/startplan',
     },
     COURSE: {
         GETDOCOURSE: '/attendcourse/getatdcourse',
@@ -23,7 +25,7 @@ export const API = {
     },
     MARK: {
         ADDQREMARK: '/qualityremark/addqualityremark',
-        ADDLESSON: 'lessonrecord/addLessonRecord',
+        ADDLESSON: '/lessonrecord/addLessonRecord',
     }
 }
 

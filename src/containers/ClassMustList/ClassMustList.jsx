@@ -2,7 +2,7 @@ import React from 'react'
 import { Card, Avatar, Divider, Button, Icon, Modal } from 'antd';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getTask } from '../../redux/action/task.action';
+import { getTask, deleteTask, addTask } from '../../redux/action/task.action';
 import { teachList } from '../../redux/action/user.action';
 import { deletePlan } from '../../redux/action/plan.action';
 import { getCookie } from '../../config/util';
@@ -10,7 +10,7 @@ const { Meta } = Card;
 const ButtonGroup = Button.Group;
 const confirm = Modal.confirm;
 
-@connect(state => state, { getTask, teachList,deletePlan})
+@connect(state => state, { getTask, deleteTask, addTask, teachList, deletePlan})
 class ClassMustList extends React.Component {
   state = {
     showAddTeacherModal:false,
@@ -89,7 +89,8 @@ class ClassMustList extends React.Component {
                           props.deletePlan({
                             userid:state.user_id,
                             token:state.access_token,
-                            planid:element.plan_id})
+                            planid:element.plan_id
+                          })
                         },
                       });
                   }}>取消听课</div>,
@@ -181,7 +182,21 @@ class ClassMustList extends React.Component {
                               <Link to={`/choseplan/${element.teaching_teacher_id}#${element.task_id}`}>选择课程
                               </Link>
                             </Button>
-                            <Button type="danger">
+                            <Button onClick={()=>{
+                              const props = this.props;
+                              const state = this.state;
+                              confirm({
+                                title: '确定是否删除该课程',
+                                okText: '确定',
+                                cancelText: '取消',
+                                okType: 'danger',
+                                onOk() {
+                                  props.deleteTask({
+                                    userid:state.user_id,
+                                    token:state.access_token,
+                                    taskid:element.task_id})
+                                },
+                              });}} type="danger">
                               删除任务
                             </Button>
                         </ButtonGroup>
@@ -213,7 +228,8 @@ class ClassMustList extends React.Component {
                             props.deletePlan({
                               userid:state.user_id,
                               token:state.access_token,
-                              planid:element.plan_id})
+                              planid:element.plan_id
+                            })
                           },
                         });
                     }}>取消听课</div>,
@@ -223,12 +239,12 @@ class ClassMustList extends React.Component {
                 >
                   <Meta
                     avatar={<Avatar shape="square" src={element.avatar} />}
-                    title={element.course_name}
+                    title={element.teacher_name}
                     description={
                       <div>
-                        <p>时间：{element.datetime} 第{element.weeks}周 {element.which_day} {element.section}节</p>
-                        <p>地点：{element.place}</p>
-                        <p>任课老师：{element.teacher_name}</p>
+                          <p>课程名称：{element.course_name}</p>
+                          <p>时间：{element.datetime} 第{element.weeks}周 {element.which_day} {element.section}节</p>
+                          <p>地点：{element.place}</p>
                       </div>
                     }
                   />
@@ -272,7 +288,13 @@ class ClassMustList extends React.Component {
           this.props.user.teacherList.length !== 0
           ? this.props.user.teacherList.map(element => {
               return (
-                <Card key={element.teacher_id} style={{
+                <Card onClick={()=>{
+                  this.props.addTask({
+                    userid:this.state.user_id,
+                    token:this.state.access_token,
+                    teacherid: element.teacher_id,
+                  })
+                }} key={element.teacher_id} style={{
                   marginTop: 20,
                   width: '100%'
                 }}>

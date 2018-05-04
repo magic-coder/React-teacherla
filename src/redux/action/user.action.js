@@ -55,3 +55,19 @@ export function teachList({ userid, token }) {
     })
   }
 }
+
+export function getTeacherList({ userid, token, attendid }) {
+  return dispatch => {
+    axios.post(URL + API.USER.GETLSTECH,{
+      userid: userid,
+      token: token,
+      attendid: attendid,
+    }).then(res => {
+      if (res.status === 200 && res.data.code === 0) {
+        dispatch(teacherList(res.data.data))
+      } else {
+        dispatch(errorMsg(res.data.msg))
+      }
+    })
+  }
+}

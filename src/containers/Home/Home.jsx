@@ -39,9 +39,11 @@ class Home extends React.PureComponent {
                 if (timer[element.section] > this.props.user.timeCheck){
                     checkIn = '等待听课'
                 } else if (timer[element.section] < this.props.user.timeCheck && this.props.course.endTime[element.section] > this.props.user.timeCheck) {
-                    checkIn = (<Link to={`/classstep/${element.attend_id}`}>进入听课</Link>)
+                    checkIn = (<Link to={`/classstep/${element.attend_id}/#${element.plan_id}`}>进入听课</Link>)
                 } else if (this.props.course.endTime[element.section] < this.props.user.timeCheck) {
                     checkIn = '课程完结'
+                } else if (element.plan_status === 2){
+                    checkIn = '听课完毕'
                 }
                 return (
                   <Card
@@ -71,7 +73,7 @@ class Home extends React.PureComponent {
       }}>听课排表 <Icon type="table" /></h1>
       {this.props.plan.plan.length !== 0
        ? this.props.plan.plan.map((element) => {
-         if (element.plan_status === 0) {
+         if (element.plan_status === 0 && element.datetime !== today) {
            return (
              <Card
                 key={element.attend_id}
