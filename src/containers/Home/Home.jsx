@@ -35,18 +35,13 @@ class Home extends React.PureComponent {
         ?
           this.props.plan.plan.map((element) => {
               if (element.datetime === today) {
-                let checkIn = '进入听课';
-                console.log(this.props.course.endTime[element.section])
+                let checkIn = '课程完结';
                 if (timer[element.section] > this.props.user.timeCheck){
-                  checkIn = '等待听课'
-                } else if (timer[element.section] <= this.props.user.timeCheck && this.props.course.endTime[element.section] >= this.props.user.timeCheck) {
-                  checkIn = ()=>{
-                    return (
-                      <Link to={`/classstep/${element.attend_id}`}>课程详情</Link>
-                    )
-                  }
+                    checkIn = '等待听课'
+                } else if (timer[element.section] < this.props.user.timeCheck && this.props.course.endTime[element.section] > this.props.user.timeCheck) {
+                    checkIn = (<Link to={`/classstep/${element.attend_id}`}>进入听课</Link>)
                 } else if (this.props.course.endTime[element.section] < this.props.user.timeCheck) {
-                    checkIn = '听课完毕'
+                    checkIn = '课程完结'
                 }
                 return (
                   <Card

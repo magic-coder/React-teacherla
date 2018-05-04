@@ -1,14 +1,16 @@
 import React from 'react'
-import { DatePicker, Icon, Card, Avatar } from 'antd'
+import { DatePicker, Icon, Card, Avatar, Modal } from 'antd'
 import moment from 'moment'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { getCookie } from '../../config/util'
 import { getLECourse } from '../../redux/action/course.action';
+import { timer } from '../../config/constance'
 
 const dateFormat = 'MM月DD日';
 const timeFormat = 'YYYY-MM-DD'
 const { Meta } = Card;
+const confirm = Modal.confirm;
 const todayTime = moment(new Date()).format(dateFormat);
 
 @connect(state => state, { getLECourse})
@@ -68,6 +70,23 @@ class VisitList extends React.PureComponent {
       <DatePicker allowClear='false' disabledDate={disabledDate} defaultValue={moment()} format={dateFormat} onChange={this.dateChange}/>
       {this.props.course.lsCourse.length !== 0
         ? this.props.course.lsCourse.map((element) => {
+          let checkIn = '课程完结';
+          if (timer[element.section] > this.props.user.timeCheck){
+              checkIn = '等待听课'
+          } else if (timer[element.section] < this.props.user.timeCheck && this.props.course.endTime[element.section] > this.props.user.timeCheck) {
+              checkIn = (<div onClick={()=> {
+                confirm({
+                  title: '确定是否添加该课程',
+                  okText: '确定',
+                  cancelText: '取消',
+                  onOk() {
+
+                  },
+                });
+              }} to={`/classstep/${element.attend_id}`}>随堂</div>)
+          } else if (this.props.course.endTime[element.section] < this.props.user.timeCheck) {
+              checkIn = '课程完结'
+          }
           return (
             <Card
               key={element.attend_id}
@@ -76,8 +95,8 @@ class VisitList extends React.PureComponent {
                 marginTop: 10,
               }}
               actions={
-                [<div>{this.state.dateTime === todayTime 
-                  ? <div><Link to={`/classstep/${element.course_id}`}>随堂听课</Link></div> 
+                [<div>{this.state.dateTime === todayTime
+                  ? <div>{checkIn}</div>
                   : <div>预约听课</div>}
                   </div>,
                   <div>

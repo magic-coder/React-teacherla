@@ -14,13 +14,17 @@ export const API = {
         GETPLAN: '/listenplan/getplan',
         DELETETPALN: '/listenplan/deleteplan',
         ADDPLANFROMC: '/listenplan/ddplanbycrs',
-        ADDPLANFROMT: '/listenplan/teacher'
+        ADDPLANFROMT: '/listenplan/addplanbytask'
     },
     COURSE: {
         GETDOCOURSE: '/attendcourse/getatdcourse',
         GETCOURSEDETAIL: '/attendcourse/getcoursedetail',
         GETLECOURSE: '/attendcourse/getcancourse',
+    },
+    MARK: {
+        ADDQREMARK: '/qualityremark/addqualityremark',
+        ADDLESSON: 'lessonrecord/addLessonRecord',
     }
 }
 
-export const IMAGES = 'http://120.78.86.5/images' 
+export const IMAGES = 'http://120.78.86.5/images'

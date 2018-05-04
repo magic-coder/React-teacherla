@@ -17,6 +17,7 @@ class ClassFinalStep extends React.Component {
   }
 
   render(){
+    console.log(this.props.store)
     return (<div>
        <h3>教学评价质量表</h3>
        <Tabs>
@@ -26,10 +27,8 @@ class ClassFinalStep extends React.Component {
              <Col span={2} />
              <Col span={12}>
               <Slider key="val_1" min={0} max={10} onChange={(v) => {
-                this.setState({
-                  val_1: v
-                })
-              }} value={this.state.val_1} />
+                this.props.handleChange('val_1',v)
+              }} value={this.props.store.val_1} />
              </Col>
              <Col span={2}>
                <InputNumber
@@ -37,11 +36,9 @@ class ClassFinalStep extends React.Component {
                  min={0}
                  max={10}
                  style={{ marginLeft: 16 }}
-                 value={this.state.val_1}
+                 value={this.props.store.val_1}
                  onChange={(v)=>{
-                   this.setState({
-                     val_1:v
-                   })
+                   this.props.handleChange('val_1',v)
                  }}
                />
              </Col>

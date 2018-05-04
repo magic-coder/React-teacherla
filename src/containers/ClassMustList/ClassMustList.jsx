@@ -1,13 +1,16 @@
 import React from 'react'
 import { Card, Avatar, Divider, Button, Icon, Modal } from 'antd';
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux'
-import { getTask } from '../../redux/action/task.action'
-import { teachList } from '../../redux/action/user.action'
-import { getCookie } from '../../config/util'
+import { connect } from 'react-redux';
+import { getTask } from '../../redux/action/task.action';
+import { teachList } from '../../redux/action/user.action';
+import { deletePlan } from '../../redux/action/plan.action';
+import { getCookie } from '../../config/util';
 const { Meta } = Card;
+const ButtonGroup = Button.Group;
+const confirm = Modal.confirm;
 
-@connect(state => state, { getTask, teachList})
+@connect(state => state, { getTask, teachList,deletePlan})
 class ClassMustList extends React.Component {
   state = {
     showAddTeacherModal:false,
@@ -54,7 +57,7 @@ class ClassMustList extends React.Component {
                   avatar={<Avatar shape="square" src={element.avatar} />}
                   title={
                     <div>{element.teacher_name}
-                        <Button style={{ float: 'right' }}>
+                        <Button type="primary" style={{ float: 'right' }}>
                           <Link to={`/choseplan/${element.teaching_teacher_id}#${element.task_id}`}>选择课程
                           </Link>
                         </Button>
@@ -72,9 +75,26 @@ class ClassMustList extends React.Component {
                   marginTop: 10,
                 }}
                 actions={
-                  [<div>取消听课</div>,
+                  [<div
+                    style={{color:'red'}}
+                    onClick={()=>{
+                      const props = this.props;
+                      const state = this.state;
+                      confirm({
+                        title: '确定是否删除该课程',
+                        okText: '确定',
+                        cancelText: '取消',
+                        okType: 'danger',
+                        onOk() {
+                          props.deletePlan({
+                            userid:state.user_id,
+                            token:state.access_token,
+                            planid:element.plan_id})
+                        },
+                      });
+                  }}>取消听课</div>,
                   <div>
-                    <Link to={`/classstatus/${element.course_id}`}><Icon type="file-pdf" /> 课程资料</Link>
+                    <Link to={`/classstatus/${element.attend_id}`}><Icon type="file-pdf" /> 课程资料</Link>
                   </div>]}
               >
                 <Meta
@@ -156,10 +176,15 @@ class ClassMustList extends React.Component {
                     avatar={<Avatar shape="square" src={element.avatar} />}
                     title={
                       <div>{element.teacher_name}
-                        <Button style={{ float: 'right' }}>
-                          <Link to={`/choseplan/${element.teaching_teacher_id}#${element.task_id}`}>选择课程
-                          </Link>
-                        </Button>
+                        <ButtonGroup style={{ float: 'right' }}>
+                            <Button type="primary">
+                              <Link to={`/choseplan/${element.teaching_teacher_id}#${element.task_id}`}>选择课程
+                              </Link>
+                            </Button>
+                            <Button type="danger">
+                              删除任务
+                            </Button>
+                        </ButtonGroup>
                       </div>
                     }
                   />
@@ -174,7 +199,24 @@ class ClassMustList extends React.Component {
                     marginTop: 10,
                   }}
                   actions={
-                    [<div>取消听课</div>,
+                    [<div
+                      style={{color:'red'}}
+                      onClick={()=>{
+                        const props = this.props;
+                        const state = this.state;
+                        confirm({
+                          title: '确定是否删除该课程',
+                          okText: '确定',
+                          cancelText: '取消',
+                          okType: 'danger',
+                          onOk() {
+                            props.deletePlan({
+                              userid:state.user_id,
+                              token:state.access_token,
+                              planid:element.plan_id})
+                          },
+                        });
+                    }}>取消听课</div>,
                     <div>
                       <Link to={`/classstatus/${element.teaching_teacher_id}`}><Icon type="file-pdf" /> 课程资料</Link>
                     </div>]}

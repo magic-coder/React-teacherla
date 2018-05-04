@@ -1,10 +1,11 @@
 import React from 'react'
-import { DatePicker, Icon, Card, Modal ,message } from 'antd'
+import { DatePicker, Icon, Card, Modal } from 'antd'
 import moment from 'moment'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
-import { getCookie } from '../../config/util'
+import { getCookie } from '../../config/util';
 import { getDoCourse } from '../../redux/action/course.action';
+import { addPlanFromT } from '../../redux/action/plan.action';
 
 const dateFormat = 'MM月DD日';
 const timeFormat = 'YYYY-MM-DD'
@@ -12,7 +13,7 @@ const { Meta } = Card;
 const confirm = Modal.confirm;
 
 
-@connect(state => state, { getDoCourse, })
+@connect(state => state, { getDoCourse,addPlanFromT })
 class Choseplan extends React.Component {
     constructor() {
         super()
@@ -58,6 +59,7 @@ class Choseplan extends React.Component {
         const disabledDate = function (current) {
             return current <= moment().add(1, 'days') - 1000 * 60 * 60 * 24;
         };
+        console.log(this.props)
         return (<div>
             <h1>
                 <span style={{
@@ -77,14 +79,19 @@ class Choseplan extends React.Component {
                                 }}
                                 actions={
                                     [<div onClick={()=>{
-                                      const goBack = this.props.history.goBack;
+                                      const props = this.props;
+                                      const state = this.state;
                                       confirm({
                                         title: '确定是否添加该课程',
+                                        okText: '确定',
+                                        cancelText: '取消',
                                         onOk() {
-                                          message.info('添加完成',5,goBack())
-                                        },
-                                        onCancel() {
-                                          console.log('Cancel');
+                                          props.addPlanFromT({
+                                            userid:state.user_id,
+                                            token:state.access_token,
+                                            attendid:element.attend_id,
+                                            ...props.match.params,
+                                            taskid:state.task_id})
                                         },
                                       });
                                     }}>预约听课

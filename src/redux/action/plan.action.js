@@ -9,7 +9,7 @@ function planList(data) {
 }
 
 function successInfo(msg) {
-    message.info(msg);
+    message.info(msg,5);
     return {type:actionType.SUCCESSINFO, payload:msg}
 }
 
@@ -46,6 +46,22 @@ export function addPlanFromC({ userid, token, attendid, teacherid }) {
     }
 }
 
+export function deletePlan({ userid, token, planid }) {
+    return dispatch => {
+        axios.post(URL + API.PLAN.DELETETPALN, {
+            token: token,
+            userid: userid,
+            planid: planid,
+        }).then(res => {
+            if (res.status === 200 && res.data.code === 0) {
+                window.location.reload();
+            } else {
+                dispatch(errorMsg(res.data.msg))
+            }
+        })
+    }
+}
+
 export function addPlanFromT({ userid, token, attendid, teacherid, taskid }) {
     return dispatch => {
         axios.post(URL + API.PLAN.ADDPLANFROMT, {
@@ -56,7 +72,7 @@ export function addPlanFromT({ userid, token, attendid, teacherid, taskid }) {
             taskid: taskid,
         }).then(res => {
             if (res.status === 200 && res.data.code === 0) {
-                dispatch(successInfo(res.data.msg))
+                window.history.back();
             } else {
                 dispatch(errorMsg(res.data.msg))
             }

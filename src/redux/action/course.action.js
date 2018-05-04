@@ -7,6 +7,64 @@ function doCourse(data) {
     return { type: actionType.GETDOCOURSE, payload: data }
 }
 
+export function makemark({
+  token,
+  userid,
+  planid,
+  chapter,
+  requirenum,
+  actualnum,
+  numoflate,
+  numofearly,
+  lessoncontent,
+  remarkoflesson,
+  suggestion,
+  date,
+  classname,
+  section,
+  place,
+  coursename,
+  needtime,
+  t1,
+  t2,
+  t3,
+  t4,
+  t5,
+  t6,
+  t7,
+  t8,
+  t9,
+  t10,
+  ttotal,
+  s1,
+  s2,
+  s3,
+  stotal,
+}) {
+    return dispatch => {
+        axios.post(URL + API.MARK.ADDQREMARK, {
+          token,
+          userid,
+          planid,
+          chapter,
+          requirenum,
+          actualnum,
+          numoflate,
+          numofearly,
+          lessoncontent,
+          remarkoflesson,
+          suggestion,
+          date,
+          section,
+          place,
+          coursename,
+          needtime,
+        }).then(
+
+        )
+    }
+}
+
 export function getDoCourse({ datetime, userid, token, teacherid}) {
     return dispatch => {
         axios.post(URL + API.COURSE.GETDOCOURSE, {

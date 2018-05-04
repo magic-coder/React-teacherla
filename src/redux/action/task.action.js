@@ -22,3 +22,19 @@ export function getTask({ userid, token }) {
         })
     }
 }
+
+export function deleteTask({ userid, token, taskid }) {
+    return dispatch => {
+        axios.post(URL + API.PLAN.DELETETASK, {
+            token: token,
+            userid: userid,
+            taskid: taskid,
+        }).then(res => {
+            if (res.status === 200 && res.data.code === 0) {
+                window.location.reload();
+            } else {
+                dispatch(errorMsg(res.data.msg))
+            }
+        })
+    }
+}
