@@ -105,7 +105,23 @@ class VisitList extends React.PureComponent {
               actions={
                 [<div>{this.state.dateTime === todayTime
                   ? <div>{checkIn}</div>
-                  : <div>预约听课</div>}
+                  : <div onClick={()=> {
+                    const props = this.props;
+                    const state = this.state;
+                    confirm({
+                      title: '确定是否添加该课程',
+                      okText: '确定',
+                      cancelText: '取消',
+                      onOk() {
+                          props.addPlanFromC({
+                            attendid: element.attend_id,
+                            token: state.access_token,
+                            userid: state.user_id,
+                            teacherid: element.teacher_id
+                          })
+                      },
+                    });
+                  }}>预约听课</div>}
                   </div>,
                   <div>
                     <Link to={`/classstatus/${element.course_id}`}><Icon type="file-pdf" /> 课程资料</Link>

@@ -14,7 +14,7 @@ class IndexRouter extends React.PureComponent {
           <AuthRouter/>
           <Switch>
             <Route path='/login' component={Login}/>
-            <Route path='/check/:task_id' component={Check}/>
+            <Route path='/check/:planid' component={Check}/>
             <Route path='/' component={HomeRouter}/>
           </Switch>
         </div>

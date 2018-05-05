@@ -1,9 +1,7 @@
 import React from 'react'
 import { Steps, Button } from 'antd';
 import { getCookie } from '../../config/util';
-import axios from 'axios';
 import { connect } from 'react-redux';
-import { API, URL } from '../../redux/contants/content';
 
 import ClassReadyStep from '../../component/ClassReadyStep/ClassReadyStep';
 import ClassOnStep from '../../component/ClassOnStep/ClassOnStep';
@@ -59,6 +57,7 @@ class ClassStep extends React.Component {
       s2: 1,
       s3: 1,
       stotal: 1,
+      set:0,
     };
     this.next = this.next.bind(this);
     this.prev = this.prev.bind(this);
@@ -67,11 +66,19 @@ class ClassStep extends React.Component {
   }
 
   componentWillMount(){
-    this.props.getCourseDetail({
-      userid: this.state.userid,
-      token: this.state.token,
-      ...this.props.match.params,
-    })
+    console.log(this.state.set)
+    if (this.state.set === 0) {
+      this.props.getCourseDetail({
+        userid: this.state.userid,
+        token: this.state.token,
+        ...this.props.match.params,
+      })
+      this.setState({
+        set:1
+      })
+    } else {
+      return null
+    }
   }
 
   handleChange(key,val){
@@ -99,7 +106,7 @@ class ClassStep extends React.Component {
       case 2:
         return (<ClassFinalStep store={this.state} handleChange={this.handleChange} />)
       case 3:
-        return (<ClassOnStep store={this.props.course.courseDetail}/>)
+        return (<ClassOnStep teacherid={window.location.search.substring(1)} planid={window.location.hash.substring(1)} {...this.props.match.params}/>)
       default:
         return null
     }
@@ -107,11 +114,6 @@ class ClassStep extends React.Component {
 
   render() {
     const {current} = this.state;
-    axios.post(URL + API.COURSE.GETCOURSEDETAIL, {
-      userid:this.state.userid,
-      planid:window.location.hash.substring(1),
-      token:this.state.token
-    })
     return (<div>
       <Steps size="small" current={current}>
         {steps.map(item => <Step key={item.title} title={item.title}/>)}
@@ -125,7 +127,7 @@ class ClassStep extends React.Component {
         {this.state.current < steps.length - 1 && <Button type="primary" onClick={() => this.next()}>下一步</Button>}
         {
           this.state.current === steps.length - 1 && <Button type="primary" onClick={() => {
-            makemark({
+            this.props.makemark({
               token: this.state.token,
               userid: this.state.userid,
               planid: window.location.hash.substring(1),

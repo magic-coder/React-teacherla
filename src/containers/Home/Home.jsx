@@ -37,9 +37,10 @@ class Home extends React.PureComponent {
               if (element.datetime === today) {
                 let checkIn = '课程完结';
                 if (timer[element.section] > this.props.user.timeCheck){
-                    checkIn = '等待听课'
+                    // checkIn = '等待开始';
+                    checkIn = (<Link to={`/classstep/${element.attend_id}/?${element.teacher_id}#${element.plan_id}`}>进入听课</Link>)
                 } else if (timer[element.section] < this.props.user.timeCheck && this.props.course.endTime[element.section] > this.props.user.timeCheck) {
-                    checkIn = (<Link to={`/classstep/${element.attend_id}/#${element.plan_id}`}>进入听课</Link>)
+                    checkIn = (<Link to={`/classstep/${element.attend_id}/?${element.teacher_id}#${element.plan_id}`}>进入听课</Link>)
                 } else if (this.props.course.endTime[element.section] < this.props.user.timeCheck) {
                     checkIn = '课程完结'
                 } else if (element.plan_status === 2){
@@ -52,7 +53,7 @@ class Home extends React.PureComponent {
                       width: '100%',
                       marginTop: 10,
                     }}
-                    actions={[<div>{checkIn}</div>, <div><Link to='/classstatus'><Icon type="file-pdf" /> 课程资料</Link></div>]}
+                    actions={[<div>{checkIn}</div>, <div><Link to={`/classstatus/${element.attend_id}`}><Icon type="file-pdf" /> 课程资料</Link></div>]}
                   >
                     <Meta avatar={<Avatar src={element.avatar} />} title={element.course_name} description={<div>
                       <p>时间：{element.datetime} 第{element.weeks}周 {element.which_day} {element.section}节</p>
