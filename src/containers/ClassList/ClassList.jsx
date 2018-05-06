@@ -82,7 +82,7 @@ class ClassList extends React.Component {
                     width: '100%',
                     marginTop: 10,
                   }}
-                  actions={[<div>课程详情</div>, <div onClick={()=>{
+                  actions={[<div onClick={()=>{
                     this.props.getTeacherList({
                       userid: this.state.user_id,
                       token: this.state.access_token,

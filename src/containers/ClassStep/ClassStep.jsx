@@ -106,7 +106,7 @@ class ClassStep extends React.Component {
       case 2:
         return (<ClassFinalStep store={this.state} handleChange={this.handleChange} />)
       case 3:
-        return (<ClassOnStep teacherid={window.location.search.substring(1)} planid={window.location.hash.substring(1)} {...this.props.match.params}/>)
+        return (<ClassOnStep teacherid={this.props.user.user_id} planid={window.location.hash.substring(1)} {...this.props.match.params}/>)
       default:
         return null
     }
