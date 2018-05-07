@@ -66,6 +66,7 @@ export function getTeacherList({ userid, token, attendid }) {
       if (res.status === 200 && res.data.code === 0) {
         dispatch(teacherList(res.data.data))
       } else {
+        dispatch(teacherList(''))
         dispatch(errorMsg(res.data.msg))
       }
     })
