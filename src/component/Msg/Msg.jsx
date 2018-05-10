@@ -1,7 +1,12 @@
 import React from 'react';
+import { messages } from ''
 
 class extends React.component {
-  constructor() {
+  render(){
+    return(
+      <div>
 
+      </div>
+    )
   }
 }
