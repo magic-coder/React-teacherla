@@ -1,9 +1,6 @@
 import React from 'react';
-import { Breadcrumb, Card } from 'antd';
 
-const { Meta } = Card;
-
-class extends React.component {
+class Msg extends React.component {
   render(){
     return(
       <div>
@@ -12,3 +9,5 @@ class extends React.component {
     )
   }
 }
+
+export default Msg
